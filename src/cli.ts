@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import 'dotenv/config';
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { join } from 'path';
@@ -8,6 +9,7 @@ import { existsSync } from 'fs';
 import { GitHubSearcher, RegistryManager } from './discovery/index.js';
 import { BuoyRunner, RepoCache } from './execution/index.js';
 import { JsonReporter, MarkdownReporter, PromptBuilder } from './reporting/index.js';
+import { Assessor } from './assessment/index.js';
 import { MIN_SCORE_THRESHOLD } from './types.js';
 import type { TestRun } from './types.js';
 
@@ -449,13 +451,19 @@ program
   });
 
 // ============================================================================
-// Assess Commands (requires @buoy-design/agents)
+// Assess Commands - Claude-powered analysis
 // ============================================================================
 
-program
-  .command('assess <repo>')
-  .description('Run full agent assessment on a tested repo')
-  .action(async (repo) => {
+const assessCmd = program.command('assess').description('Run Claude assessment on test results');
+
+assessCmd
+  .command('single <repo>')
+  .description('Assess a single tested repo')
+  .option('--model <model>', 'Claude model to use', 'claude-sonnet-4-20250514')
+  .option('--max-tokens <n>', 'Max response tokens', '8000')
+  .option('--dry-run', 'Show prompt without calling API')
+  .option('--force', 'Re-assess even if already assessed')
+  .action(async (repo, options) => {
     const [owner, name] = repo.split('/');
     if (!owner || !name) {
       console.error(chalk.red('Error: Invalid repo format. Use owner/name'));
@@ -463,23 +471,210 @@ program
     }
 
     const testRunPath = join(getResultsDir(), owner, name, 'test-run.json');
-
     if (!existsSync(testRunPath)) {
       console.error(chalk.red(`No test results for ${repo}. Run 'buoy-test run single ${repo}' first.`));
       process.exit(1);
     }
 
-    console.log(chalk.blue(`Assessing ${repo}...`));
-    console.log(chalk.yellow('\nAgent assessment requires @buoy-design/agents package.'));
-    console.log(chalk.yellow('Once agents are built, this will run:'));
-    console.log('  - CodebaseReviewAgent');
-    console.log('  - HistoryReviewAgent');
-    console.log('  - AcceptanceAgent');
-    console.log('\nFor now, use the generated prompt.md file with Claude directly.');
+    // Check if already assessed
+    const assessmentPath = join(getResultsDir(), owner, name, 'assessment.json');
+    if (existsSync(assessmentPath) && !options.force && !options.dryRun) {
+      console.log(chalk.yellow(`${repo} already assessed. Use --force to re-assess.`));
+      return;
+    }
 
-    const promptPath = join(getResultsDir(), owner, name, 'prompt.md');
-    if (existsSync(promptPath)) {
-      console.log(chalk.green(`\nPrompt file: ${promptPath}`));
+    // Load test run
+    const { readFile } = await import('fs/promises');
+    const testRun: TestRun = JSON.parse(await readFile(testRunPath, 'utf-8'));
+
+    const assessor = new Assessor({
+      reposDir: getReposDir(),
+      resultsDir: getResultsDir(),
+      model: options.model,
+      maxTokens: parseInt(options.maxTokens, 10),
+    });
+
+    if (options.dryRun) {
+      console.log(chalk.blue(`\nDry run - prompt for ${repo}:\n`));
+      const prompt = await assessor.dryRun(testRun);
+      console.log(prompt);
+      console.log(chalk.dim(`\n--- End of prompt (${prompt.length} chars) ---`));
+      return;
+    }
+
+    console.log(chalk.blue(`\nAssessing ${repo} with Claude...`));
+    console.log(chalk.dim(`Model: ${options.model}`));
+
+    try {
+      const { assessment, outputPath, tokensUsed } = await assessor.assessTestRun(testRun);
+
+      console.log(chalk.green(`\nAssessment complete!`));
+      console.log(`  Mode: ${assessment.mode}`);
+      console.log(`  Tokens used: ${tokensUsed}`);
+      console.log(`  Missed patterns: ${assessment.missedPatterns.length}`);
+      console.log(`  Improvements: ${assessment.improvements.length}`);
+
+      if (assessment.missedPatterns.length > 0) {
+        console.log(chalk.bold('\nTop missed patterns:'));
+        for (const pattern of assessment.missedPatterns.slice(0, 5)) {
+          console.log(`  - [${pattern.severity}] ${pattern.category}: ${pattern.description}`);
+          console.log(chalk.dim(`    File: ${pattern.evidence.file}`));
+        }
+      }
+
+      if (assessment.improvements.length > 0) {
+        console.log(chalk.bold('\nSuggested improvements:'));
+        for (const imp of assessment.improvements.slice(0, 3)) {
+          console.log(`  - [${imp.area}] ${imp.title}`);
+          console.log(chalk.dim(`    ${imp.estimatedImpact}`));
+        }
+      }
+
+      console.log(chalk.green(`\nResults saved to: ${outputPath}`));
+    } catch (error) {
+      console.error(chalk.red('\nAssessment failed:'), error);
+      process.exit(1);
+    }
+  });
+
+assessCmd
+  .command('batch')
+  .alias('all')
+  .description('Assess all tested repos')
+  .option('--model <model>', 'Claude model to use', 'claude-sonnet-4-20250514')
+  .option('--max-tokens <n>', 'Max response tokens', '8000')
+  .option('--skip-existing', 'Skip repos already assessed', true)
+  .action(async (options) => {
+    const resultsDir = getResultsDir();
+
+    if (!existsSync(resultsDir)) {
+      console.log(chalk.yellow('No results found. Run some tests first.'));
+      return;
+    }
+
+    // Collect all test runs
+    const testRuns: TestRun[] = [];
+    const { readFile: rf } = await import('fs/promises');
+
+    const owners = await readdir(resultsDir);
+    for (const owner of owners) {
+      const ownerPath = join(resultsDir, owner);
+      try {
+        const repos = await readdir(ownerPath);
+        for (const repo of repos) {
+          const testRunPath = join(ownerPath, repo, 'test-run.json');
+          if (existsSync(testRunPath)) {
+            const content = await rf(testRunPath, 'utf-8');
+            testRuns.push(JSON.parse(content));
+          }
+        }
+      } catch {
+        // Skip non-directories
+      }
+    }
+
+    if (testRuns.length === 0) {
+      console.log(chalk.yellow('No test results found.'));
+      return;
+    }
+
+    console.log(chalk.blue(`\nAssessing ${testRuns.length} repos with Claude...\n`));
+
+    const assessor = new Assessor({
+      reposDir: getReposDir(),
+      resultsDir: getResultsDir(),
+      model: options.model,
+      maxTokens: parseInt(options.maxTokens, 10),
+    });
+
+    const results = await assessor.assessBatch(testRuns, {
+      skipExisting: options.skipExisting,
+      onProgress: (completed, total) => {
+        console.log(chalk.dim(`  Progress: ${completed}/${total}`));
+      },
+    });
+
+    // Summary
+    const totalMissed = results.reduce((sum, r) => sum + r.assessment.missedPatterns.length, 0);
+    const totalImprovements = results.reduce((sum, r) => sum + r.assessment.improvements.length, 0);
+    const totalTokens = results.reduce((sum, r) => sum + r.tokensUsed, 0);
+
+    console.log(chalk.green(`\nBatch assessment complete!`));
+    console.log(`  Repos assessed: ${results.length}`);
+    console.log(`  Total missed patterns: ${totalMissed}`);
+    console.log(`  Total improvements: ${totalImprovements}`);
+    console.log(`  Total tokens used: ${totalTokens}`);
+    console.log(`\nResults saved to: ${resultsDir}`);
+  });
+
+assessCmd
+  .command('summary')
+  .description('Generate aggregate assessment summary')
+  .action(async () => {
+    const resultsDir = getResultsDir();
+
+    if (!existsSync(resultsDir)) {
+      console.log(chalk.yellow('No results found.'));
+      return;
+    }
+
+    // Collect all assessments
+    const { readFile: rf } = await import('fs/promises');
+    const allMissed: Array<{ repo: string; pattern: unknown }> = [];
+    const allImprovements: Array<{ repo: string; improvement: unknown }> = [];
+    const improvementCounts: Record<string, number> = {};
+
+    const owners = await readdir(resultsDir);
+    for (const owner of owners) {
+      const ownerPath = join(resultsDir, owner);
+      try {
+        const repos = await readdir(ownerPath);
+        for (const repo of repos) {
+          const assessmentPath = join(ownerPath, repo, 'assessment.json');
+          if (existsSync(assessmentPath)) {
+            const content = await rf(assessmentPath, 'utf-8');
+            const assessment = JSON.parse(content);
+
+            for (const pattern of assessment.missedPatterns ?? []) {
+              allMissed.push({ repo: `${owner}/${repo}`, pattern });
+            }
+
+            for (const improvement of assessment.improvements ?? []) {
+              allImprovements.push({ repo: `${owner}/${repo}`, improvement });
+              const area = improvement.area ?? 'unknown';
+              improvementCounts[area] = (improvementCounts[area] ?? 0) + 1;
+            }
+          }
+        }
+      } catch {
+        // Skip non-directories
+      }
+    }
+
+    if (allMissed.length === 0 && allImprovements.length === 0) {
+      console.log(chalk.yellow('No assessments found. Run `assess batch` first.'));
+      return;
+    }
+
+    console.log(chalk.bold('\nAssessment Summary\n'));
+    console.log(`Total missed patterns: ${allMissed.length}`);
+    console.log(`Total improvements: ${allImprovements.length}`);
+
+    console.log(chalk.bold('\nImprovement areas:'));
+    const sorted = Object.entries(improvementCounts).sort((a, b) => b[1] - a[1]);
+    for (const [area, count] of sorted) {
+      console.log(`  ${area}: ${count}`);
+    }
+
+    console.log(chalk.bold('\nMissed by category:'));
+    const byCategory: Record<string, number> = {};
+    for (const { pattern } of allMissed) {
+      const p = pattern as Record<string, unknown>;
+      const cat = String(p['category'] ?? 'unknown');
+      byCategory[cat] = (byCategory[cat] ?? 0) + 1;
+    }
+    for (const [cat, count] of Object.entries(byCategory).sort((a, b) => b[1] - a[1])) {
+      console.log(`  ${cat}: ${count}`);
     }
   });
 
