@@ -1,0 +1,77 @@
+{
+  "id": "chakra-ui-chakra-ui-1767153420849",
+  "repo": {
+    "url": "https://github.com/chakra-ui/chakra-ui",
+    "owner": "chakra-ui",
+    "name": "chakra-ui",
+    "description": "Chakra UI is a component system for building SaaS products with speed ⚡️",
+    "stars": 40100,
+    "forks": 3555,
+    "defaultBranch": "main",
+    "lastCommit": "2025-12-31T01:36:59.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "a11y",
+      "accessible",
+      "ark-ui",
+      "chakra-ui",
+      "component",
+      "css-in-js",
+      "dark-mode",
+      "design-system",
+      "react",
+      "react-components",
+      "reactjs",
+      "styled",
+      "ui-components",
+      "ui-library",
+      "uikit",
+      "wai-aria"
+    ],
+    "designSystemSignals": [
+      "storybook"
+    ],
+    "activitySignals": [
+      "recent-commits",
+      "contributing-guide",
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 10,
+      "designSystem": 3,
+      "activity": 7,
+      "breakdown": {
+        "storybook": 3,
+        "recent-commits": 2,
+        "contributing-guide": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2025-12-31T03:48:51.386Z",
+    "lastTestedAt": "2025-12-31T03:49:52.199Z"
+  },
+  "status": "completed",
+  "startedAt": "2025-12-31T03:57:00.849Z",
+  "buoyVersion": "0.0.1",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 0,
+      "tokens": 0,
+      "sources": []
+    },
+    "status": {
+      "coverage": {}
+    },
+    "drift": {
+      "total": 0,
+      "byType": {},
+      "bySeverity": {},
+      "signals": []
+    }
+  },
+  "completedAt": "2025-12-31T03:57:08.688Z",
+  "durationMs": 7839
+}

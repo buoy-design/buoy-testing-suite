@@ -1,0 +1,21 @@
+{
+  "repo": {
+    "url": "https://github.com/shadcn-ui/ui",
+    "name": "ui",
+    "owner": "shadcn-ui"
+  },
+  "score": 5,
+  "testedAt": "2025-12-31T03:57:25.720Z",
+  "buoyVersion": "0.0.1",
+  "designSystemSources": [],
+  "scan": {
+    "components": 0,
+    "tokens": 357,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 0,
+    "byType": {},
+    "bySeverity": {}
+  }
+}

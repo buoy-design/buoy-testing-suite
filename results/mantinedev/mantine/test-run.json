@@ -1,0 +1,66 @@
+{
+  "id": "mantinedev-mantine-1767153420850",
+  "repo": {
+    "url": "https://github.com/mantinedev/mantine",
+    "owner": "mantinedev",
+    "name": "mantine",
+    "description": "A fully featured React components library",
+    "stars": 30311,
+    "forks": 2216,
+    "defaultBranch": "master",
+    "lastCommit": "2025-12-21T09:03:54.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "dark-mode",
+      "dark-theme",
+      "hooks",
+      "react",
+      "typescript",
+      "uikit"
+    ],
+    "designSystemSignals": [
+      "storybook"
+    ],
+    "activitySignals": [
+      "recent-commits",
+      "contributing-guide",
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 10,
+      "designSystem": 3,
+      "activity": 7,
+      "breakdown": {
+        "storybook": 3,
+        "recent-commits": 2,
+        "contributing-guide": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2025-12-31T03:49:15.102Z"
+  },
+  "status": "completed",
+  "startedAt": "2025-12-31T03:57:00.850Z",
+  "buoyVersion": "0.0.1",
+  "configGenerated": true,
+  "buoyOutput": {
+    "scan": {
+      "components": 0,
+      "tokens": 356,
+      "sources": []
+    },
+    "status": {
+      "coverage": {}
+    },
+    "drift": {
+      "total": 0,
+      "byType": {},
+      "bySeverity": {},
+      "signals": []
+    }
+  },
+  "completedAt": "2025-12-31T03:57:11.738Z",
+  "durationMs": 10888
+}

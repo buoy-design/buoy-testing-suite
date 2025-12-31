@@ -1,0 +1,168 @@
+Looking at this shadcn/ui repository, I can see that Buoy has significantly underperformed in detecting the wealth of design system components present. This is a major component library with hundreds of UI components across multiple registry variants (default, new-york, new-york-v4), yet Buoy detected 0 components.
+
+## Analysis of What Buoy Missed
+
+### 1. Missed Components
+The repository contains numerous React components that are core to the design system:
+- **Button components** with variant systems using class-variance-authority (cva)
+- **Input components** with consistent styling patterns
+- **Card components** with multiple sub-components (Header, Title, Description, etc.)
+- Multiple registry variants showing evolution of the design system
+
+### 2. Missed Design Tokens
+While Buoy found 357 tokens in CSS files, it likely missed:
+- **Semantic token usage** in component class strings (like `bg-primary`, `text-primary-foreground`)
+- **Spacing tokens** embedded in Tailwind classes
+- **Component-specific tokens** defined in variant objects
+
+### 3. Missed Drift Detection
+There's clear evidence of design drift between registry versions:
+- **Inconsistent button heights** across variants (h-9 vs h-10)
+- **Different focus ring implementations** (ring-1 vs ring-2 vs ring-[3px])
+- **Varying padding patterns** and border radius values
+
+### 4. Configuration Issues
+Buoy's configuration only scanned CSS files for tokens but completely missed the TypeScript component files where the actual design system lives. The registry structure suggests this is a component distribution system, not just a CSS framework.
+
+```json
+{
+  "missedPatterns": [
+    {
+      "category": "component",
+      "description": "React components using cva (class-variance-authority) pattern",
+      "evidence": {
+        "file": "deprecated/www/registry/default/ui/button.tsx",
+        "lineRange": [7, 35],
+        "codeSnippet": "const buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive: \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\n        outline: \"border border-input bg-background hover:bg-accent hover:text-accent-foreground\",\n        secondary: \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-10 px-4 py-2\",\n        sm: \"h-9 rounded-md px-3\",\n        lg: \"h-11 rounded-md px-8\",\n        icon: \"h-10 w-10\",\n      },\n    }\n  }\n)"
+      },
+      "suggestedDetection": "Scan for cva() function calls and extract variant definitions as component APIs",
+      "severity": "high"
+    },
+    {
+      "category": "component",
+      "description": "React.forwardRef component pattern with displayName",
+      "evidence": {
+        "file": "deprecated/www/registry/default/ui/input.tsx",
+        "lineRange": [5, 19],
+        "codeSnippet": "const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<\"input\">>(({ className, type, ...props }, ref) => {\n    return (\n      <input\n        type={type}\n        className={cn(\n          \"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n          className\n        )}\n        ref={ref}\n        {...props}\n      />\n    )\n  }\n)\nInput.displayName = \"Input\""
+      },
+      "suggestedDetection": "Detect React.forwardRef patterns with displayName assignments as component definitions",
+      "severity": "high"
+    },
+    {
+      "category": "drift",
+      "description": "Inconsistent button heights across registry variants",
+      "evidence": {
+        "file": "deprecated/www/registry/default/ui/button.tsx vs deprecated/www/registry/new-york/ui/button.tsx",
+        "lineRange": [20, 25],
+        "codeSnippet": "// Default: default: \"h-10 px-4 py-2\"\n// New York: default: \"h-9 px-4 py-2\"\n// Different height values for same size variant"
+      },
+      "suggestedDetection": "Compare variant values across similar components in different directories/registries",
+      "severity": "medium"
+    },
+    {
+      "category": "drift",
+      "description": "Inconsistent focus ring implementations",
+      "evidence": {
+        "file": "apps/v4/registry/new-york-v4/ui/button.tsx",
+        "lineRange": [8, 10],
+        "codeSnippet": "// V4: focus-visible:ring-ring/50 focus-visible:ring-[3px]\n// Default: focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\n// New York: focus-visible:ring-1 focus-visible:ring-ring"
+      },
+      "suggestedDetection": "Parse Tailwind classes and flag inconsistent focus-visible patterns",
+      "severity": "medium"
+    },
+    {
+      "category": "token",
+      "description": "Semantic design tokens in Tailwind classes",
+      "evidence": {
+        "file": "deprecated/www/registry/default/ui/button.tsx",
+        "lineRange": [13, 18],
+        "codeSnippet": "default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\ndestructive: \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\noutline: \"border border-input bg-background hover:bg-accent hover:text-accent-foreground\""
+      },
+      "suggestedDetection": "Extract semantic tokens from Tailwind class strings (bg-primary, text-foreground, etc.)",
+      "severity": "high"
+    },
+    {
+      "category": "source",
+      "description": "Registry directory structure indicating component variants",
+      "evidence": {
+        "file": "deprecated/www/registry/",
+        "lineRange": [1, 1],
+        "codeSnippet": "Registry structure: default/, new-york/, new-york-v4/ containing ui/ directories with components"
+      },
+      "suggestedDetection": "Detect registry/variant directory patterns and scan all component files within",
+      "severity": "high"
+    }
+  ],
+  "improvements": [
+    {
+      "area": "scanner",
+      "title": "Add TypeScript/TSX component file detection",
+      "description": "Currently only scanning CSS files. Need to scan .tsx/.ts files in registry and ui directories for React components using patterns like forwardRef, cva, and component exports.",
+      "examples": [
+        "apps/v4/registry/**/ui/*.tsx",
+        "deprecated/www/registry/**/ui/*.tsx"
+      ],
+      "estimatedImpact": "Would catch 50+ components across all registry variants"
+    },
+    {
+      "area": "config",
+      "title": "Auto-detect registry directory patterns",
+      "description": "Add heuristics to automatically discover component registry structures like */registry/*/ui/ and include all variants in component scanning.",
+      "examples": [
+        "deprecated/www/registry/default/ui/",
+        "deprecated/www/registry/new-york/ui/",
+        "apps/v4/registry/new-york-v4/ui/"
+      ],
+      "estimatedImpact": "Would automatically include all component variants"
+    },
+    {
+      "area": "token-parser",
+      "title": "Parse semantic tokens from Tailwind classes",
+      "description": "Extract design tokens from Tailwind class strings, especially semantic tokens like bg-primary, text-foreground, border-input that represent the design system's token vocabulary.",
+      "examples": [
+        "bg-primary text-primary-foreground",
+        "border border-input bg-background",
+        "text-muted-foreground"
+      ],
+      "estimatedImpact": "Would catch 100+ semantic design tokens"
+    },
+    {
+      "area": "drift-rules",
+      "title": "Cross-variant consistency checking",
+      "description": "Compare similar components across different registry variants to detect drift in sizing, spacing, and styling patterns. Flag when same component has different implementations.",
+      "examples": [
+        "Button height differences: h-9 vs h-10",
+        "Focus ring variations: ring-1 vs ring-2 vs ring-[3px]",
+        "Card border radius: rounded-lg vs rounded-xl"
+      ],
+      "estimatedImpact": "Would catch 10-20 drift instances across component variants"
+    },
+    {
+      "area": "scanner",
+      "title": "CVA (class-variance-authority) pattern detection",
+      "description": "Specifically detect and parse cva() function calls to extract component variants and their associated styling tokens as structured component APIs.",
+      "examples": [
+        "buttonVariants = cva() with variant and size objects",
+        "cardVariants with different styling patterns"
+      ],
+      "estimatedImpact": "Would properly categorize variant-based components"
+    }
+  ],
+  "summary": {
+    "totalMissed": 6,
+    "missedByCategory": {
+      "component": 2,
+      "token": 1,
+      "drift": 2,
+      "source": 1
+    },
+    "improvementAreas": [
+      "scanner",
+      "config",
+      "token-parser",
+      "drift-rules"
+    ]
+  }
+}
+```

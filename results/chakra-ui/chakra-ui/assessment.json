@@ -1,0 +1,176 @@
+{
+  "testRunId": "chakra-ui-chakra-ui-1767153420849",
+  "repoOwner": "chakra-ui",
+  "repoName": "chakra-ui",
+  "assessedAt": "2025-12-31T04:59:47.394Z",
+  "mode": "coverage-analysis",
+  "model": "claude-sonnet-4-20250514",
+  "tokensUsed": 14514,
+  "analysis": "Looking at this Chakra UI repository, Buoy has completely missed a massive design system implementation. This is one of the most popular React component libraries, and detecting 0 components and 0 tokens indicates significant issues with Buoy's detection capabilities.\n\n## Major Issues Identified\n\n### 1. Missed Component Detection\nBuoy failed to detect any React components despite this being a full component library. The components use modern patterns that Buoy apparently doesn't recognize:\n\n- **Recipe-based components**: Components like `Button` use `createRecipeContext` pattern\n- **Slot-based components**: Components like `Card` use `createSlotRecipeContext` pattern  \n- **ForwardRef components**: Standard React patterns with `forwardRef`\n- **Context providers**: Component prop providers and context usage\n\n### 2. Missed Token Detection\nThe configuration explicitly lists token files, but Buoy detected 0 tokens. This suggests:\n\n- Token files might not exist at the specified paths\n- Buoy's token parser doesn't understand the token format used\n- The token structure is incompatible with Buoy's expectations\n\n### 3. Missed Storybook Integration\nDespite having extensive Storybook setup with stories for components, Buoy didn't detect this as a design system source.\n\n### 4. Path Configuration Issues\nThe React source configuration targets `src/**/*.tsx` but the actual components are in `packages/react/src/components/`, which should be covered but apparently isn't working.\n\n### 5. Monorepo Structure Challenges\nBuoy seems to struggle with the monorepo structure where components are in `packages/react/src/` rather than a simple `src/` directory.\n\n```json\n{\n  \"missedPatterns\": [\n    {\n      \"category\": \"component\",\n      \"description\": \"Recipe-based component using createRecipeContext pattern\",\n      \"evidence\": {\n        \"file\": \"packages/react/src/components/button/button.tsx\",\n        \"lineRange\": [15, 45],\n        \"codeSnippet\": \"const { useRecipeResult, PropsProvider, usePropsContext } = createRecipeContext({ key: \\\"button\\\" })\\n\\nexport const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(inProps, ref) {\\n  const propsContext = usePropsContext()\\n  const props = useMemo(() => mergeProps(propsContext, inProps), [propsContext, inProps])\\n  const result = useRecipeResult(props)\"\n      },\n      \"suggestedDetection\": \"Detect components that use createRecipeContext, createSlotRecipeContext, and export forwardRef patterns\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"component\", \n      \"description\": \"Slot-based component using createSlotRecipeContext pattern\",\n      \"evidence\": {\n        \"file\": \"packages/react/src/components/card/card.tsx\",\n        \"lineRange\": [9, 25],\n        \"codeSnippet\": \"const { withProvider, withContext, useStyles: useCardStyles, PropsProvider } = createSlotRecipeContext({ key: \\\"card\\\" })\\n\\nexport const CardRoot = withProvider<HTMLDivElement, CardRootProps>(\\\"div\\\", \\\"root\\\")\\nexport const CardBody = withContext<HTMLDivElement, CardBodyProps>(\\\"div\\\", \\\"body\\\")\"\n      },\n      \"suggestedDetection\": \"Detect multi-part components using withProvider/withContext patterns and slot-based architecture\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"component\",\n      \"description\": \"Ark UI wrapper component with recipe context\",\n      \"evidence\": {\n        \"file\": \"packages/react/src/components/input/input.tsx\",\n        \"lineRange\": [9, 18],\n        \"codeSnippet\": \"const { withContext, PropsProvider } = createRecipeContext({ key: \\\"input\\\" })\\n\\nexport const Input = withContext<HTMLInputElement, InputProps>(ArkField.Input)\"\n      },\n      \"suggestedDetection\": \"Detect components that wrap third-party UI primitives (Ark UI) with design system context\",\n      \"severity\": \"medium\"\n    },\n    {\n      \"category\": \"source\",\n      \"description\": \"Storybook stories not detected despite proper configuration\",\n      \"evidence\": {\n        \"file\": \"sandbox/storybook-ts/stories/button.stories.tsx\",\n        \"lineRange\": [1, 25],\n        \"codeSnippet\": \"import { Button } from \\\"@chakra-ui/react\\\"\\nimport type { Meta, StoryObj } from \\\"@storybook/react\\\"\\n\\nconst meta: Meta<typeof Button> = { component: Button }\\n\\nexport const Solid: Story = { args: { children: \\\"Button\\\", variant: \\\"solid\\\" } }\"\n      },\n      \"suggestedDetection\": \"Improve Storybook detection to find stories that import design system components\",\n      \"severity\": \"medium\"\n    },\n    {\n      \"category\": \"source\",\n      \"description\": \"Component usage in documentation/examples not detected\",\n      \"evidence\": {\n        \"file\": \"apps/www/components/mdx/card.tsx\",\n        \"lineRange\": [5, 15],\n        \"codeSnippet\": \"import { Box, HStack, Icon, IconProps, SimpleGrid, SimpleGridProps, Stack } from \\\"@chakra-ui/react\\\"\\n\\nexport const Card = (props: CardProps) => {\\n  return (\\n    <Box asChild padding=\\\"6\\\" borderWidth=\\\"1px\\\" rounded=\\\"lg\\\" focusRing=\\\"outside\\\" _hover={{ bg: \\\"bg.muted\\\" }}>\"\n      },\n      \"suggestedDetection\": \"Detect component usage patterns and imports from design system packages\",\n      \"severity\": \"medium\"\n    },\n    {\n      \"category\": \"token\",\n      \"description\": \"Token files specified in config but not detected\",\n      \"evidence\": {\n        \"file\": \"buoy.config.mjs\",\n        \"lineRange\": [15, 35],\n        \"codeSnippet\": \"files: [\\n  'apps/www/public/r/theme/tokens.json',\\n  'apps/www/public/r/theme/tokens/colors.json',\\n  'apps/www/public/r/theme/tokens/spacing.json',\\n  'packages/react/src/theme/index.ts'\\n]\"\n      },\n      \"suggestedDetection\": \"Verify token files exist at specified paths and improve error reporting for missing files\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"drift\",\n      \"description\": \"Hardcoded styling values in component props\",\n      \"evidence\": {\n        \"file\": \"apps/www/components/mdx/card.tsx\",\n        \"lineRange\": [45, 50],\n        \"codeSnippet\": \"<Box asChild padding=\\\"6\\\" borderWidth=\\\"1px\\\" rounded=\\\"lg\\\" focusRing=\\\"outside\\\" _hover={{ bg: \\\"bg.muted\\\" }}>\"\n      },\n      \"suggestedDetection\": \"Detect hardcoded values in component props that could use design tokens\",\n      \"severity\": \"low\"\n    }\n  ],\n  \"improvements\": [\n    {\n      \"area\": \"scanner\",\n      \"title\": \"Support modern React component patterns\",\n      \"description\": \"Add detection for createRecipeContext, createSlotRecipeContext, withContext, withProvider patterns commonly used in modern design systems\",\n      \"examples\": [\n        \"createRecipeContext({ key: \\\"button\\\" })\",\n        \"withContext<HTMLInputElement, InputProps>(ArkField.Input)\"\n      ],\n      \"estimatedImpact\": \"Would catch 20+ components in this repo\"\n    },\n    {\n      \"area\": \"config\",\n      \"title\": \"Better monorepo support\",\n      \"description\": \"Improve path resolution for monorepo structures where components are in packages/*/src rather than root src\",\n      \"examples\": [\n        \"packages/react/src/**/*.tsx should be automatically detected\",\n        \"Support workspace-aware path resolution\"\n      ],\n      \"estimatedImpact\": \"Would catch all components in packages subdirectories\"\n    },\n    {\n      \"area\": \"token-parser\",\n      \"title\": \"Token file validation and error reporting\",\n      \"description\": \"Add validation to check if specified token files exist and provide clear error messages when files are missing\",\n      \"examples\": [\n        \"Warning: Token file 'apps/www/public/r/theme/tokens.json' not found\"\n      ],\n      \"estimatedImpact\": \"Would prevent silent failures and help debug token detection issues\"\n    },\n    {\n      \"area\": \"scanner\", \n      \"title\": \"Third-party UI library wrapper detection\",\n      \"description\": \"Detect components that wrap third-party UI primitives (like Ark UI, Radix) with design system styling\",\n      \"examples\": [\n        \"Input wrapping ArkField.Input\",\n        \"Components importing from @ark-ui/react\"\n      ],\n      \"estimatedImpact\": \"Would catch primitive-based design system components\"\n    },\n    {\n      \"area\": \"drift-rules\",\n      \"title\": \"Design system prop usage analysis\",\n      \"description\": \"Analyze component prop usage to detect potential drift - hardcoded values vs design token usage\",\n      \"examples\": [\n        \"padding=\\\"6\\\" vs padding={spacing[6]}\",\n        \"bg=\\\"bg.muted\\\" (using design tokens) vs bg=\\\"#f5f5f5\\\" (hardcoded)\"\n      ],\n      \"estimatedImpact\": \"Would identify token adoption gaps and inconsistencies\"\n    }\n  ],\n  \"summary\": {\n    \"totalMissed\": 7,\n    \"missedByCategory\": {\n      \"component\": 3,\n      \"token\": 1,\n      \"drift\": 1,\n      \"source\": 2\n    },\n    \"improvementAreas\": [\n      \"scanner\",\n      \"config\", \n      \"token-parser\",\n      \"drift-rules\"\n    ]\n  }\n}\n```",
+  "missedPatterns": [
+    {
+      "category": "component",
+      "description": "Recipe-based component using createRecipeContext pattern",
+      "evidence": {
+        "file": "packages/react/src/components/button/button.tsx",
+        "lineRange": [
+          15,
+          45
+        ],
+        "codeSnippet": "const { useRecipeResult, PropsProvider, usePropsContext } = createRecipeContext({ key: \"button\" })\n\nexport const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(inProps, ref) {\n  const propsContext = usePropsContext()\n  const props = useMemo(() => mergeProps(propsContext, inProps), [propsContext, inProps])\n  const result = useRecipeResult(props)"
+      },
+      "suggestedDetection": "Detect components that use createRecipeContext, createSlotRecipeContext, and export forwardRef patterns",
+      "severity": "high"
+    },
+    {
+      "category": "component",
+      "description": "Slot-based component using createSlotRecipeContext pattern",
+      "evidence": {
+        "file": "packages/react/src/components/card/card.tsx",
+        "lineRange": [
+          9,
+          25
+        ],
+        "codeSnippet": "const { withProvider, withContext, useStyles: useCardStyles, PropsProvider } = createSlotRecipeContext({ key: \"card\" })\n\nexport const CardRoot = withProvider<HTMLDivElement, CardRootProps>(\"div\", \"root\")\nexport const CardBody = withContext<HTMLDivElement, CardBodyProps>(\"div\", \"body\")"
+      },
+      "suggestedDetection": "Detect multi-part components using withProvider/withContext patterns and slot-based architecture",
+      "severity": "high"
+    },
+    {
+      "category": "component",
+      "description": "Ark UI wrapper component with recipe context",
+      "evidence": {
+        "file": "packages/react/src/components/input/input.tsx",
+        "lineRange": [
+          9,
+          18
+        ],
+        "codeSnippet": "const { withContext, PropsProvider } = createRecipeContext({ key: \"input\" })\n\nexport const Input = withContext<HTMLInputElement, InputProps>(ArkField.Input)"
+      },
+      "suggestedDetection": "Detect components that wrap third-party UI primitives (Ark UI) with design system context",
+      "severity": "medium"
+    },
+    {
+      "category": "source",
+      "description": "Storybook stories not detected despite proper configuration",
+      "evidence": {
+        "file": "sandbox/storybook-ts/stories/button.stories.tsx",
+        "lineRange": [
+          1,
+          25
+        ],
+        "codeSnippet": "import { Button } from \"@chakra-ui/react\"\nimport type { Meta, StoryObj } from \"@storybook/react\"\n\nconst meta: Meta<typeof Button> = { component: Button }\n\nexport const Solid: Story = { args: { children: \"Button\", variant: \"solid\" } }"
+      },
+      "suggestedDetection": "Improve Storybook detection to find stories that import design system components",
+      "severity": "medium"
+    },
+    {
+      "category": "source",
+      "description": "Component usage in documentation/examples not detected",
+      "evidence": {
+        "file": "apps/www/components/mdx/card.tsx",
+        "lineRange": [
+          5,
+          15
+        ],
+        "codeSnippet": "import { Box, HStack, Icon, IconProps, SimpleGrid, SimpleGridProps, Stack } from \"@chakra-ui/react\"\n\nexport const Card = (props: CardProps) => {\n  return (\n    <Box asChild padding=\"6\" borderWidth=\"1px\" rounded=\"lg\" focusRing=\"outside\" _hover={{ bg: \"bg.muted\" }}>"
+      },
+      "suggestedDetection": "Detect component usage patterns and imports from design system packages",
+      "severity": "medium"
+    },
+    {
+      "category": "token",
+      "description": "Token files specified in config but not detected",
+      "evidence": {
+        "file": "buoy.config.mjs",
+        "lineRange": [
+          15,
+          35
+        ],
+        "codeSnippet": "files: [\n  'apps/www/public/r/theme/tokens.json',\n  'apps/www/public/r/theme/tokens/colors.json',\n  'apps/www/public/r/theme/tokens/spacing.json',\n  'packages/react/src/theme/index.ts'\n]"
+      },
+      "suggestedDetection": "Verify token files exist at specified paths and improve error reporting for missing files",
+      "severity": "high"
+    },
+    {
+      "category": "drift",
+      "description": "Hardcoded styling values in component props",
+      "evidence": {
+        "file": "apps/www/components/mdx/card.tsx",
+        "lineRange": [
+          45,
+          50
+        ],
+        "codeSnippet": "<Box asChild padding=\"6\" borderWidth=\"1px\" rounded=\"lg\" focusRing=\"outside\" _hover={{ bg: \"bg.muted\" }}>"
+      },
+      "suggestedDetection": "Detect hardcoded values in component props that could use design tokens",
+      "severity": "low"
+    }
+  ],
+  "improvements": [
+    {
+      "area": "scanner",
+      "title": "Support modern React component patterns",
+      "description": "Add detection for createRecipeContext, createSlotRecipeContext, withContext, withProvider patterns commonly used in modern design systems",
+      "examples": [
+        "createRecipeContext({ key: \"button\" })",
+        "withContext<HTMLInputElement, InputProps>(ArkField.Input)"
+      ],
+      "estimatedImpact": "Would catch 20+ components in this repo"
+    },
+    {
+      "area": "config",
+      "title": "Better monorepo support",
+      "description": "Improve path resolution for monorepo structures where components are in packages/*/src rather than root src",
+      "examples": [
+        "packages/react/src/**/*.tsx should be automatically detected",
+        "Support workspace-aware path resolution"
+      ],
+      "estimatedImpact": "Would catch all components in packages subdirectories"
+    },
+    {
+      "area": "token-parser",
+      "title": "Token file validation and error reporting",
+      "description": "Add validation to check if specified token files exist and provide clear error messages when files are missing",
+      "examples": [
+        "Warning: Token file 'apps/www/public/r/theme/tokens.json' not found"
+      ],
+      "estimatedImpact": "Would prevent silent failures and help debug token detection issues"
+    },
+    {
+      "area": "scanner",
+      "title": "Third-party UI library wrapper detection",
+      "description": "Detect components that wrap third-party UI primitives (like Ark UI, Radix) with design system styling",
+      "examples": [
+        "Input wrapping ArkField.Input",
+        "Components importing from @ark-ui/react"
+      ],
+      "estimatedImpact": "Would catch primitive-based design system components"
+    },
+    {
+      "area": "drift-rules",
+      "title": "Design system prop usage analysis",
+      "description": "Analyze component prop usage to detect potential drift - hardcoded values vs design token usage",
+      "examples": [
+        "padding=\"6\" vs padding={spacing[6]}",
+        "bg=\"bg.muted\" (using design tokens) vs bg=\"#f5f5f5\" (hardcoded)"
+      ],
+      "estimatedImpact": "Would identify token adoption gaps and inconsistencies"
+    }
+  ],
+  "summary": {
+    "totalMissed": 7,
+    "missedByCategory": {
+      "component": 3,
+      "token": 1,
+      "drift": 1,
+      "source": 2
+    },
+    "improvementAreas": [
+      "scanner",
+      "config",
+      "token-parser",
+      "drift-rules"
+    ]
+  }
+}

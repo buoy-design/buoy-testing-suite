@@ -1,0 +1,23 @@
+{
+  "repo": {
+    "url": "https://github.com/chakra-ui/chakra-ui",
+    "name": "chakra-ui",
+    "owner": "chakra-ui"
+  },
+  "score": 10,
+  "testedAt": "2025-12-31T03:57:08.688Z",
+  "buoyVersion": "0.0.1",
+  "designSystemSources": [
+    "storybook"
+  ],
+  "scan": {
+    "components": 0,
+    "tokens": 0,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 0,
+    "byType": {},
+    "bySeverity": {}
+  }
+}

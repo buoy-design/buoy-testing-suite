@@ -1,0 +1,163 @@
+{
+  "testRunId": "radix-ui-primitives-1767153431740",
+  "repoOwner": "radix-ui",
+  "repoName": "primitives",
+  "assessedAt": "2025-12-31T05:09:04.538Z",
+  "mode": "coverage-analysis",
+  "model": "claude-sonnet-4-20250514",
+  "tokensUsed": 4961,
+  "analysis": "Looking at this Radix Primitives repository, I can see that Buoy has significantly underperformed in detecting what should be a treasure trove of design system components and patterns. This is a major UI component library, yet Buoy found 0 components - which is clearly incorrect.\n\nLet me analyze what Buoy missed by examining the repository structure and the limited samples provided.\n\n## Major Detection Gaps\n\n### 1. Component Source Discovery\nThe biggest issue is that Buoy's configuration is looking for components in `src/**/*.tsx` and `src/**/*.jsx`, but this repository uses a different structure. The actual components are located in `packages/react/` based on the directory structure shown. This is a classic monorepo structure that Buoy failed to detect.\n\n### 2. Package-based Component Architecture\nRadix Primitives follows a package-per-component architecture where each primitive (Button, Dialog, Tooltip, etc.) is its own package under `packages/react/`. Buoy's current scanning patterns don't account for this common design system pattern.\n\n### 3. Design Token Infrastructure\nWhile Buoy found 5 tokens, this seems severely limited for a comprehensive design system. The dependency on `@radix-ui/colors` in package.json suggests there's a significant color system that Buoy likely missed. The tokens Buoy found were only from Storybook CSS files, not the actual design system token definitions.\n\n### 4. Missing TypeScript Definitions\nFor a TypeScript-first library like this, Buoy should be detecting component prop interfaces, which are crucial for understanding the design system's API surface.\n\n### 5. Storybook Integration\nThe repository has a full Storybook setup (`apps/storybook/`) which typically contains rich examples of component usage and variations that should be analyzed for drift detection.\n\n### 6. Build System and Internal Tooling\nThe `internal/` directory and complex build scripts suggest sophisticated design system tooling that Buoy isn't detecting.\n\n## Configuration and Detection Issues\n\nThe current Buoy configuration is too narrow and doesn't understand monorepo structures. The include patterns need to be expanded to cover:\n- `packages/react/**/*.tsx` for components\n- `packages/core/**/*` for potential core utilities\n- Token definitions likely in dedicated files or packages\n- Internal tooling that might contain design system logic\n\n```json\n{\n  \"missedPatterns\": [\n    {\n      \"category\": \"source\",\n      \"description\": \"Buoy's include patterns don't match the actual component locations in this monorepo structure\",\n      \"evidence\": {\n        \"file\": \"buoy.config.mjs\",\n        \"lineRange\": [8, 11],\n        \"codeSnippet\": \"include: ['src/**/*.tsx', 'src/**/*.jsx'],\\nexclude: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],\"\n      },\n      \"suggestedDetection\": \"Auto-detect monorepo structures and scan packages/ directories by default\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"component\",\n      \"description\": \"All React components in packages/react/ are missed due to incorrect source paths\",\n      \"evidence\": {\n        \"file\": \"packages/react/\",\n        \"lineRange\": [1, 1],\n        \"codeSnippet\": \"packages/react/ directory contains the actual component implementations\"\n      },\n      \"suggestedDetection\": \"Scan packages/react/**/*.tsx for component definitions and exports\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"token\",\n      \"description\": \"Design tokens from @radix-ui/colors dependency are not being detected\",\n      \"evidence\": {\n        \"file\": \"package.json\",\n        \"lineRange\": [33, 33],\n        \"codeSnippet\": \"\\\"@radix-ui/colors\\\": \\\"^3.0.0\\\",\"\n      },\n      \"suggestedDetection\": \"Parse design token dependencies and their exported values\",\n      \"severity\": \"high\"\n    },\n    {\n      \"category\": \"component\",\n      \"description\": \"TypeScript component interfaces and prop definitions are not being detected\",\n      \"evidence\": {\n        \"file\": \"types/\",\n        \"lineRange\": [1, 1],\n        \"codeSnippet\": \"types/ directory likely contains component type definitions\"\n      },\n      \"suggestedDetection\": \"Parse TypeScript interfaces that match component prop patterns (e.g., ButtonProps, DialogProps)\",\n      \"severity\": \"medium\"\n    },\n    {\n      \"category\": \"drift\",\n      \"description\": \"Storybook stories that demonstrate component usage are excluded from drift analysis\",\n      \"evidence\": {\n        \"file\": \"buoy.config.mjs\",\n        \"lineRange\": [10, 10],\n        \"codeSnippet\": \"exclude: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],\"\n      },\n      \"suggestedDetection\": \"Include stories for drift detection but mark them as 'example usage' rather than production code\",\n      \"severity\": \"medium\"\n    },\n    {\n      \"category\": \"token\",\n      \"description\": \"Internal design system tooling and utilities in internal/ directory are not scanned\",\n      \"evidence\": {\n        \"file\": \"internal/\",\n        \"lineRange\": [1, 1],\n        \"codeSnippet\": \"internal/ directory likely contains design system build tools and utilities\"\n      },\n      \"suggestedDetection\": \"Scan internal tooling directories for design system configurations and token generators\",\n      \"severity\": \"low\"\n    }\n  ],\n  \"improvements\": [\n    {\n      \"area\": \"scanner\",\n      \"title\": \"Monorepo Structure Detection\",\n      \"description\": \"Automatically detect common monorepo patterns (packages/, libs/, apps/) and adjust scanning accordingly. Look for workspace configurations in package.json or pnpm-workspace.yaml.\",\n      \"examples\": [\n        \"pnpm-workspace.yaml indicates packages/* structure\",\n        \"packages/react/ contains actual components\"\n      ],\n      \"estimatedImpact\": \"Would catch 50+ components in this repo alone\"\n    },\n    {\n      \"area\": \"config\",\n      \"title\": \"Smart Default Patterns\",\n      \"description\": \"Provide better default include/exclude patterns that work for common design system structures. Include framework-specific patterns for React, Vue, Angular component libraries.\",\n      \"examples\": [\n        \"packages/react/**/*.tsx for React components\",\n        \"packages/core/**/*.ts for utilities\"\n      ],\n      \"estimatedImpact\": \"Would work out-of-the-box for 80% of design system repos\"\n    },\n    {\n      \"area\": \"token-parser\",\n      \"title\": \"Dependency Token Analysis\",\n      \"description\": \"Parse design tokens from package dependencies, especially design-related packages like color systems, typography scales, or spacing tokens.\",\n      \"examples\": [\n        \"@radix-ui/colors package exports\",\n        \"Design token packages in node_modules\"\n      ],\n      \"estimatedImpact\": \"Would catch hundreds of additional tokens\"\n    },\n    {\n      \"area\": \"scanner\",\n      \"title\": \"TypeScript Interface Detection\",\n      \"description\": \"Detect component prop interfaces and type definitions as part of the design system API. Parse Props interfaces and correlate them with components.\",\n      \"examples\": [\n        \"ButtonProps interface definitions\",\n        \"Component prop type exports\"\n      ],\n      \"estimatedImpact\": \"Would provide richer component metadata and validation\"\n    },\n    {\n      \"area\": \"drift-rules\",\n      \"title\": \"Example Code Analysis\",\n      \"description\": \"Analyze Storybook stories and example code for drift patterns, but mark findings as 'examples' rather than violations. This helps understand intended usage patterns.\",\n      \"examples\": [\n        \"Component usage patterns in *.stories.tsx\",\n        \"Documentation examples showing proper token usage\"\n      ],\n      \"estimatedImpact\": \"Would improve drift detection accuracy by understanding intended patterns\"\n    }\n  ],\n  \"summary\": {\n    \"totalMissed\": 6,\n    \"missedByCategory\": {\n      \"component\": 2,\n      \"token\": 2,\n      \"drift\": 1,\n      \"source\": 1\n    },\n    \"improvementAreas\": [\n      \"scanner\",\n      \"config\",\n      \"token-parser\",\n      \"drift-rules\"\n    ]\n  }\n}\n```",
+  "missedPatterns": [
+    {
+      "category": "source",
+      "description": "Buoy's include patterns don't match the actual component locations in this monorepo structure",
+      "evidence": {
+        "file": "buoy.config.mjs",
+        "lineRange": [
+          8,
+          11
+        ],
+        "codeSnippet": "include: ['src/**/*.tsx', 'src/**/*.jsx'],\nexclude: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],"
+      },
+      "suggestedDetection": "Auto-detect monorepo structures and scan packages/ directories by default",
+      "severity": "high"
+    },
+    {
+      "category": "component",
+      "description": "All React components in packages/react/ are missed due to incorrect source paths",
+      "evidence": {
+        "file": "packages/react/",
+        "lineRange": [
+          1,
+          1
+        ],
+        "codeSnippet": "packages/react/ directory contains the actual component implementations"
+      },
+      "suggestedDetection": "Scan packages/react/**/*.tsx for component definitions and exports",
+      "severity": "high"
+    },
+    {
+      "category": "token",
+      "description": "Design tokens from @radix-ui/colors dependency are not being detected",
+      "evidence": {
+        "file": "package.json",
+        "lineRange": [
+          33,
+          33
+        ],
+        "codeSnippet": "\"@radix-ui/colors\": \"^3.0.0\","
+      },
+      "suggestedDetection": "Parse design token dependencies and their exported values",
+      "severity": "high"
+    },
+    {
+      "category": "component",
+      "description": "TypeScript component interfaces and prop definitions are not being detected",
+      "evidence": {
+        "file": "types/",
+        "lineRange": [
+          1,
+          1
+        ],
+        "codeSnippet": "types/ directory likely contains component type definitions"
+      },
+      "suggestedDetection": "Parse TypeScript interfaces that match component prop patterns (e.g., ButtonProps, DialogProps)",
+      "severity": "medium"
+    },
+    {
+      "category": "drift",
+      "description": "Storybook stories that demonstrate component usage are excluded from drift analysis",
+      "evidence": {
+        "file": "buoy.config.mjs",
+        "lineRange": [
+          10,
+          10
+        ],
+        "codeSnippet": "exclude: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],"
+      },
+      "suggestedDetection": "Include stories for drift detection but mark them as 'example usage' rather than production code",
+      "severity": "medium"
+    },
+    {
+      "category": "token",
+      "description": "Internal design system tooling and utilities in internal/ directory are not scanned",
+      "evidence": {
+        "file": "internal/",
+        "lineRange": [
+          1,
+          1
+        ],
+        "codeSnippet": "internal/ directory likely contains design system build tools and utilities"
+      },
+      "suggestedDetection": "Scan internal tooling directories for design system configurations and token generators",
+      "severity": "low"
+    }
+  ],
+  "improvements": [
+    {
+      "area": "scanner",
+      "title": "Monorepo Structure Detection",
+      "description": "Automatically detect common monorepo patterns (packages/, libs/, apps/) and adjust scanning accordingly. Look for workspace configurations in package.json or pnpm-workspace.yaml.",
+      "examples": [
+        "pnpm-workspace.yaml indicates packages/* structure",
+        "packages/react/ contains actual components"
+      ],
+      "estimatedImpact": "Would catch 50+ components in this repo alone"
+    },
+    {
+      "area": "config",
+      "title": "Smart Default Patterns",
+      "description": "Provide better default include/exclude patterns that work for common design system structures. Include framework-specific patterns for React, Vue, Angular component libraries.",
+      "examples": [
+        "packages/react/**/*.tsx for React components",
+        "packages/core/**/*.ts for utilities"
+      ],
+      "estimatedImpact": "Would work out-of-the-box for 80% of design system repos"
+    },
+    {
+      "area": "token-parser",
+      "title": "Dependency Token Analysis",
+      "description": "Parse design tokens from package dependencies, especially design-related packages like color systems, typography scales, or spacing tokens.",
+      "examples": [
+        "@radix-ui/colors package exports",
+        "Design token packages in node_modules"
+      ],
+      "estimatedImpact": "Would catch hundreds of additional tokens"
+    },
+    {
+      "area": "scanner",
+      "title": "TypeScript Interface Detection",
+      "description": "Detect component prop interfaces and type definitions as part of the design system API. Parse Props interfaces and correlate them with components.",
+      "examples": [
+        "ButtonProps interface definitions",
+        "Component prop type exports"
+      ],
+      "estimatedImpact": "Would provide richer component metadata and validation"
+    },
+    {
+      "area": "drift-rules",
+      "title": "Example Code Analysis",
+      "description": "Analyze Storybook stories and example code for drift patterns, but mark findings as 'examples' rather than violations. This helps understand intended usage patterns.",
+      "examples": [
+        "Component usage patterns in *.stories.tsx",
+        "Documentation examples showing proper token usage"
+      ],
+      "estimatedImpact": "Would improve drift detection accuracy by understanding intended patterns"
+    }
+  ],
+  "summary": {
+    "totalMissed": 6,
+    "missedByCategory": {
+      "component": 2,
+      "token": 2,
+      "drift": 1,
+      "source": 1
+    },
+    "improvementAreas": [
+      "scanner",
+      "config",
+      "token-parser",
+      "drift-rules"
+    ]
+  }
+}

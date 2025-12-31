@@ -1,0 +1,63 @@
+{
+  "id": "shadcn-ui-ui-1767153431742",
+  "repo": {
+    "url": "https://github.com/shadcn-ui/ui",
+    "owner": "shadcn-ui",
+    "name": "ui",
+    "description": "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.",
+    "stars": 103792,
+    "forks": 7564,
+    "defaultBranch": "main",
+    "lastCommit": "2025-12-18T22:22:28.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "base-ui",
+      "components",
+      "nextjs",
+      "radix-ui",
+      "react",
+      "shadcn",
+      "tailwindcss",
+      "ui"
+    ],
+    "designSystemSignals": [],
+    "activitySignals": [
+      "recent-commits",
+      "contributing-guide",
+      "high-stars"
+    ],
+    "score": {
+      "total": 5,
+      "designSystem": 0,
+      "activity": 5,
+      "breakdown": {
+        "recent-commits": 2,
+        "contributing-guide": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2025-12-31T03:49:10.577Z"
+  },
+  "status": "completed",
+  "startedAt": "2025-12-31T03:57:11.742Z",
+  "buoyVersion": "0.0.1",
+  "configGenerated": true,
+  "buoyOutput": {
+    "scan": {
+      "components": 0,
+      "tokens": 357,
+      "sources": []
+    },
+    "status": {
+      "coverage": {}
+    },
+    "drift": {
+      "total": 0,
+      "byType": {},
+      "bySeverity": {},
+      "signals": []
+    }
+  },
+  "completedAt": "2025-12-31T03:57:25.720Z",
+  "durationMs": 13978
+}
