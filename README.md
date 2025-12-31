@@ -56,21 +56,55 @@ buoy-test registry stats
 buoy-test registry remove owner/name
 ```
 
-### Testing (coming soon)
+### Testing
 
 ```bash
 # Test a single repo
 buoy-test run single owner/name
 
-# Test top N repos
+# Test top N repos from registry
 buoy-test run batch --top 10
+
+# Test with custom concurrency
+buoy-test run batch --top 20 --concurrency 3
+
+# Test only untested repos
+buoy-test run batch --untested-only
 ```
 
-### Assessment (coming soon)
+### Cache Management
 
 ```bash
-# Run full agent assessment
-buoy-test assess owner/name
+# Show cache statistics
+buoy-test cache status
+
+# Clean old cached repos (default: 30 days)
+buoy-test cache clean --max-age 30
+```
+
+### Reporting
+
+```bash
+# Generate aggregate report across all tested repos
+buoy-test aggregate
+```
+
+### Assessment
+
+Uses Claude to analyze test results and identify missed patterns.
+
+```bash
+# Assess a single repo
+buoy-test assess single owner/name
+
+# Assess all tested repos
+buoy-test assess batch
+
+# Skip repos that already have assessments
+buoy-test assess batch --skip-existing
+
+# Generate aggregate assessment summary
+buoy-test assess summary
 ```
 
 ## Scoring
@@ -98,15 +132,30 @@ Minimum score to be included: **5**
 ```
 buoy-testing-suite/
 ├── src/
-│   ├── discovery/      # GitHub search and scoring
-│   ├── execution/      # Test execution pipeline
-│   ├── reporting/      # Report generation
-│   ├── assessment/     # Agent orchestration
-│   └── cli.ts          # CLI entry point
-├── registry/           # Discovered repos
+│   ├── discovery/      # GitHub search and repo scoring
+│   ├── execution/      # Test runner and repo caching
+│   ├── reporting/      # JSON/Markdown report generation
+│   ├── assessment/     # Claude-powered analysis
+│   ├── cli.ts          # CLI entry point
+│   └── types.ts        # Core type definitions
+├── registry/           # Discovered repo metadata
 ├── repos/              # Cloned repos (gitignored)
-└── results/            # Test results
+├── results/            # Test results and assessments
+└── BUOY_ROADMAP.md     # Improvement roadmap from findings
 ```
+
+## Tested Repositories
+
+The following major design systems have been analyzed:
+
+| Repository | Stars | Key Patterns |
+|------------|-------|--------------|
+| [chakra-ui/chakra-ui](https://github.com/chakra-ui/chakra-ui) | 40k+ | Ark UI wrappers, monorepo |
+| [radix-ui/primitives](https://github.com/radix-ui/primitives) | 16k+ | Standard React, compound components |
+| [shadcn-ui/ui](https://github.com/shadcn-ui/ui) | 75k+ | CVA pattern, registry variants |
+| [mantinedev/mantine](https://github.com/mantinedev/mantine) | 30k+ | polymorphicFactory pattern |
+
+Results and assessments are stored in `results/{owner}/{repo}/`.
 
 ## Requirements
 
