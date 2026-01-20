@@ -1,0 +1,29 @@
+{
+  "repo": {
+    "url": "https://github.com/GorvGoyl/Personal-Site-Gourav.io",
+    "name": "Personal-Site-Gourav.io",
+    "owner": "GorvGoyl"
+  },
+  "score": 6,
+  "testedAt": "2026-01-17T00:58:18.536Z",
+  "buoyVersion": "0.2.5",
+  "designSystemSources": [
+    "blog-app"
+  ],
+  "scan": {
+    "components": 58,
+    "tokens": 0,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 5,
+    "byType": {
+      "hardcoded-value": 4,
+      "naming-inconsistency": 1
+    },
+    "bySeverity": {
+      "warning": 2,
+      "info": 3
+    }
+  }
+}

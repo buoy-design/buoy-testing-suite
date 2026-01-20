@@ -1,0 +1,62 @@
+{
+  "id": "tangly1024-NotionNext-1768768132160",
+  "repo": {
+    "url": "https://github.com/tangly1024/NotionNext",
+    "owner": "tangly1024",
+    "name": "NotionNext",
+    "description": "使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.)",
+    "stars": 10966,
+    "forks": 14244,
+    "defaultBranch": "main",
+    "lastCommit": "2025-12-16T14:24:57.000Z",
+    "language": "JavaScript",
+    "topics": [
+      "blog",
+      "nextjs",
+      "notion",
+      "react",
+      "tailwindcss",
+      "vercel",
+      "zeabur"
+    ],
+    "designSystemSignals": [
+      "tailwind-theme",
+      "headless-ui"
+    ],
+    "activitySignals": [
+      "contributing-guide",
+      "high-stars"
+    ],
+    "score": {
+      "total": 8,
+      "designSystem": 5,
+      "activity": 3,
+      "breakdown": {
+        "tailwind-theme": 2,
+        "headless-ui": 3,
+        "contributing-guide": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-18T20:27:12.854Z"
+  },
+  "status": "completed",
+  "startedAt": "2026-01-18T20:28:52.160Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 1,
+      "tokens": 0,
+      "sources": []
+    },
+    "drift": {
+      "total": 0,
+      "byType": {},
+      "bySeverity": {},
+      "signals": []
+    }
+  },
+  "completedAt": "2026-01-18T20:28:55.697Z",
+  "durationMs": 3537
+}

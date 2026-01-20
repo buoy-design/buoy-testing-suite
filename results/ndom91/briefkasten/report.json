@@ -1,0 +1,28 @@
+{
+  "repo": {
+    "url": "https://github.com/ndom91/briefkasten",
+    "name": "briefkasten",
+    "owner": "ndom91"
+  },
+  "score": 5,
+  "testedAt": "2026-01-17T01:09:55.104Z",
+  "buoyVersion": "0.2.5",
+  "designSystemSources": [
+    "nextjs-app"
+  ],
+  "scan": {
+    "components": 33,
+    "tokens": 0,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 4,
+    "byType": {
+      "hardcoded-value": 4
+    },
+    "bySeverity": {
+      "info": 3,
+      "warning": 1
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "SashenJayathilaka-Project-Management-App-1768612907027",
+  "repo": {
+    "url": "https://github.com/SashenJayathilaka/Project-Management-App",
+    "owner": "SashenJayathilaka",
+    "name": "Project-Management-App",
+    "description": "This repository provides a guide to building a full-stack Project Management Dashboard. The frontend uses Next.js, Tailwind CSS, and Material UI Data Grid. The backend is powered by Node.js, Express, PostgreSQL, and Prisma. Cloud integration includes AWS Lambda and Cognito, ensuring a scalable, efficient, and secure solution for project management",
+    "stars": 220,
+    "forks": 79,
+    "defaultBranch": "master",
+    "lastCommit": "2025-07-19T05:26:51.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "amplify",
+      "api-gateway",
+      "aws-amplify-react",
+      "aws-lambda",
+      "axios",
+      "cognito",
+      "concurrently",
+      "ec2",
+      "express",
+      "lucide-react",
+      "morgan",
+      "nextjs",
+      "postgresql",
+      "prisma",
+      "react-dnd",
+      "recharts",
+      "reduxjs-toolkit",
+      "s3-bucket",
+      "tailwind-css",
+      "typescript"
+    ],
+    "designSystemSignals": [
+      "nextjs-app"
+    ],
+    "activitySignals": [
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 5,
+      "designSystem": 2,
+      "activity": 3,
+      "breakdown": {
+        "nextjs-app": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-17T00:45:29.188Z"
+  },
+  "status": "completed",
+  "startedAt": "2026-01-17T01:21:47.027Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 0,
+      "tokens": 0,
+      "sources": []
+    },
+    "drift": {
+      "total": 0,
+      "byType": {},
+      "bySeverity": {},
+      "signals": []
+    }
+  },
+  "completedAt": "2026-01-17T01:21:49.437Z",
+  "durationMs": 2410
+}

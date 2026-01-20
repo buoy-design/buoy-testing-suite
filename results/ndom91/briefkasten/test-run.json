@@ -1,0 +1,160 @@
+{
+  "id": "ndom91-briefkasten-1768612191589",
+  "repo": {
+    "url": "https://github.com/ndom91/briefkasten",
+    "owner": "ndom91",
+    "name": "briefkasten",
+    "description": "📮 Self hosted bookmarking app",
+    "stars": 1142,
+    "forks": 46,
+    "defaultBranch": "main",
+    "lastCommit": "2025-05-08T15:44:03.000Z",
+    "language": "JavaScript",
+    "topics": [
+      "bookmarks",
+      "nextjs",
+      "planetscale",
+      "prisma",
+      "tailwindcss"
+    ],
+    "designSystemSignals": [
+      "nextjs-app"
+    ],
+    "activitySignals": [
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 5,
+      "designSystem": 2,
+      "activity": 3,
+      "breakdown": {
+        "nextjs-app": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-17T00:45:23.587Z"
+  },
+  "status": "completed",
+  "startedAt": "2026-01-17T01:09:51.589Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 33,
+      "tokens": 0,
+      "sources": []
+    },
+    "drift": {
+      "total": 4,
+      "byType": {
+        "hardcoded-value": 4
+      },
+      "bySeverity": {
+        "info": 3,
+        "warning": 1
+      },
+      "signals": [
+        {
+          "id": "drift:hardcoded-value:react:src/pages/tags.jsx:Tags:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:src/pages/tags.jsx:Tags",
+            "entityName": "Tags",
+            "location": "src/pages/tags.jsx:25"
+          },
+          "message": "Component \"Tags\" has 5 hardcoded size values: 12%, 5%, 30%, 25%, 23%",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 12% (line 115)",
+              "width: 5% (line 118)",
+              "width: 30% (line 121)",
+              "width: 25% (line 127)",
+              "width: 23% (line 130)"
+            ]
+          },
+          "detectedAt": "2026-01-17T01:09:55.072Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:src/pages/categories.jsx:Categories:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:src/pages/categories.jsx:Categories",
+            "entityName": "Categories",
+            "location": "src/pages/categories.jsx:25"
+          },
+          "message": "Component \"Categories\" has 5 hardcoded size values: 12%, 5%, 20%, 25%, 23%",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 12% (line 114)",
+              "width: 5% (line 117)",
+              "width: 20% (line 120)",
+              "width: 25% (line 123)",
+              "width: 23% (line 129)"
+            ]
+          },
+          "detectedAt": "2026-01-17T01:09:55.072Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:src/components/table.jsx:DataTable:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:src/components/table.jsx:DataTable",
+            "entityName": "DataTable",
+            "location": "src/components/table.jsx:3"
+          },
+          "message": "Component \"DataTable\" has 5 hardcoded size values: 20px, 20%, 25%, 10%, 6%",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 20px (line 8)",
+              "width: 20% (line 11)",
+              "width: 25% (line 17)",
+              "width: 10% (line 20)",
+              "width: 6% (line 29)"
+            ]
+          },
+          "detectedAt": "2026-01-17T01:09:55.072Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:src/components/meta.jsx:Meta:color",
+          "type": "hardcoded-value",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:src/components/meta.jsx:Meta",
+            "entityName": "Meta",
+            "location": "src/components/meta.jsx:4"
+          },
+          "message": "Component \"Meta\" has 1 hardcoded color: #1E293B",
+          "details": {
+            "suggestions": [
+              "Replace hardcoded colors with design tokens"
+            ],
+            "affectedFiles": [
+              "color: #1E293B (line 29)"
+            ]
+          },
+          "detectedAt": "2026-01-17T01:09:55.072Z"
+        }
+      ]
+    }
+  },
+  "completedAt": "2026-01-17T01:09:55.104Z",
+  "durationMs": 3515
+}

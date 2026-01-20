@@ -1,0 +1,177 @@
+{
+  "id": "GorvGoyl-Personal-Site-Gourav.io-1768611495300",
+  "repo": {
+    "url": "https://github.com/GorvGoyl/Personal-Site-Gourav.io",
+    "owner": "GorvGoyl",
+    "name": "Personal-Site-Gourav.io",
+    "description": "My personal site & blog made with NextJS, Typescript, Tailwind CSS, MDX, Notion as CMS. Deployed on Vercel : https://gourav.io ",
+    "stars": 130,
+    "forks": 16,
+    "defaultBranch": "main",
+    "lastCommit": "2025-12-31T05:18:47.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "blog",
+      "giscus",
+      "markdown",
+      "mdx",
+      "nextjs",
+      "notion",
+      "personal-website",
+      "reactjs",
+      "tailwindcss",
+      "typescript",
+      "vercel"
+    ],
+    "designSystemSignals": [
+      "blog-app"
+    ],
+    "activitySignals": [
+      "recent-commits",
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 6,
+      "designSystem": 1,
+      "activity": 5,
+      "breakdown": {
+        "blog-app": 1,
+        "recent-commits": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-17T00:46:30.897Z"
+  },
+  "status": "completed",
+  "startedAt": "2026-01-17T00:58:15.300Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 58,
+      "tokens": 0,
+      "sources": []
+    },
+    "drift": {
+      "total": 5,
+      "byType": {
+        "hardcoded-value": 4,
+        "naming-inconsistency": 1
+      },
+      "bySeverity": {
+        "warning": 2,
+        "info": 3
+      },
+      "signals": [
+        {
+          "id": "drift:hardcoded-value:react:components/twitterEmbed.tsx:TweetEmbed:color",
+          "type": "hardcoded-value",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:components/twitterEmbed.tsx:TweetEmbed",
+            "entityName": "TweetEmbed",
+            "location": "components/twitterEmbed.tsx:4"
+          },
+          "message": "Component \"TweetEmbed\" has 1 hardcoded color: #1da1f2",
+          "details": {
+            "suggestions": [
+              "Replace hardcoded colors with design tokens"
+            ],
+            "affectedFiles": [
+              "fill: #1da1f2 (line 25)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:58:18.498Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:components/notionBoost.tsx:Social:color",
+          "type": "hardcoded-value",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:components/notionBoost.tsx:Social",
+            "entityName": "Social",
+            "location": "components/notionBoost.tsx:120"
+          },
+          "message": "Component \"Social\" has 1 hardcoded color: #FA5252",
+          "details": {
+            "suggestions": [
+              "Replace hardcoded colors with design tokens"
+            ],
+            "affectedFiles": [
+              "fill: #FA5252 (line 129)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:58:18.498Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:components/icons/TerminalIcon.tsx:TerminalIcon:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:components/icons/TerminalIcon.tsx:TerminalIcon",
+            "entityName": "TerminalIcon",
+            "location": "components/icons/TerminalIcon.tsx:3"
+          },
+          "message": "Component \"TerminalIcon\" has 2 hardcoded size values: 1em, 1em",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 1em (line 7)",
+              "height: 1em (line 8)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:58:18.498Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:components/icons/ArrowNorthEastIcon.tsx:ArrowNorthEastIcon:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:components/icons/ArrowNorthEastIcon.tsx:ArrowNorthEastIcon",
+            "entityName": "ArrowNorthEastIcon",
+            "location": "components/icons/ArrowNorthEastIcon.tsx:3"
+          },
+          "message": "Component \"ArrowNorthEastIcon\" has 2 hardcoded size values: 1em, 1em",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 1em (line 7)",
+              "height: 1em (line 8)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:58:18.498Z"
+        },
+        {
+          "id": "drift:naming-inconsistency:react:lib/localContentUtils.tsx:process.env.ESBUILD_BINARY_PATH",
+          "type": "naming-inconsistency",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:lib/localContentUtils.tsx:process.env.ESBUILD_BINARY_PATH",
+            "entityName": "process.env.ESBUILD_BINARY_PATH",
+            "location": "lib/localContentUtils.tsx:1"
+          },
+          "message": "Component \"process.env.ESBUILD_BINARY_PATH\" uses other but 98% of components use PascalCase",
+          "details": {
+            "suggestions": [
+              "Consider renaming to match project convention (PascalCase)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:58:18.498Z"
+        }
+      ]
+    }
+  },
+  "completedAt": "2026-01-17T00:58:18.536Z",
+  "durationMs": 3236
+}

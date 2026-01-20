@@ -1,0 +1,324 @@
+{
+  "repo": "tangly1024/NotionNext",
+  "scannedAt": "2026-01-16T23:44:01.726Z",
+  "model": "claude-sonnet-4-20250514",
+  "scanCount": 3,
+  "components": {
+    "total": 80,
+    "min": 75,
+    "max": 85,
+    "stdDev": 3.0,
+    "byType": {
+      "function": 78,
+      "forwardRef": 0,
+      "memo": 1,
+      "class": 0,
+      "factory": 0,
+      "compound": 1
+    },
+    "names": [
+      "Ribbon",
+      "NotionIcon",
+      "Messenger",
+      "DashboardHeader",
+      "DashboardBody",
+      "DashboardUser",
+      "DashboardButton",
+      "TwikooRecentComments",
+      "Equation",
+      "IconFont",
+      "AOSAnimation",
+      "QrCode",
+      "Badge",
+      "PrismMac",
+      "Gtag",
+      "VConsole",
+      "GiscusComponent",
+      "Live2D",
+      "ShareBar",
+      "LoadingCover",
+      "CursorDot",
+      "Collapse",
+      "FlipCard",
+      "Loading",
+      "DisableCopy",
+      "ChatBase",
+      "NotByAI",
+      "CusdisComponent",
+      "Artalk",
+      "CopyRightDate",
+      "Tabs",
+      "Ackee",
+      "NotionPage",
+      "SideBarDrawer",
+      "SEO",
+      "LazyImage",
+      "Gitalk",
+      "FacebookPage",
+      "Busuanzi",
+      "PoweredBy",
+      "Nest",
+      "Vercel",
+      "Comment",
+      "PerformanceMonitor",
+      "ValineComponent",
+      "Accessibility",
+      "ExternalPlugin",
+      "Select",
+      "ShareButtons",
+      "TeX",
+      "AISummary",
+      "Sakura",
+      "BeiAnSite",
+      "SmartLink",
+      "Player",
+      "DarkModeButton",
+      "Utterances",
+      "StarrySky",
+      "DebugPanel",
+      "LoadingProgress",
+      "FullScreenButton",
+      "Lenis",
+      "WalineComponent",
+      "AlgoliaSearchModal",
+      "CustomContextMenu",
+      "ThemeSwitch",
+      "Twikoo",
+      "Coze",
+      "Fireworks",
+      "Moon",
+      "Sun",
+      "Home",
+      "Draggable",
+      "BeiAnGongAn",
+      "SignUp",
+      "Page",
+      "ErrorPage",
+      "MyApp",
+      "Index",
+      "Search"
+    ]
+  },
+  "tokens": {
+    "total": 147,
+    "min": 127,
+    "max": 312,
+    "stdDev": 82.89886743630592,
+    "byCategory": {
+      "color": 44,
+      "spacing": 14,
+      "typography": 23,
+      "shadow": 8,
+      "border": 4,
+      "other": 102
+    },
+    "samples": {
+      "color": [
+        "--theme-color",
+        "day.DEFAULT",
+        "night.DEFAULT",
+        "primary",
+        "secondary",
+        "dark.DEFAULT",
+        "colors.day.DEFAULT",
+        "colors.night.DEFAULT",
+        "colors.primary",
+        "colors.dark.DEFAULT",
+        "hexo.background-gray"
+      ],
+      "spacing": [
+        "maxWidth.side",
+        "maxWidth.9/10",
+        "screens.sm",
+        "screens.md",
+        "container.padding",
+        "width: 5px",
+        "width.5"
+      ]
+    }
+  },
+  "patterns": [
+    "function components",
+    "jsx styling",
+    "theme configuration",
+    "css-in-js",
+    "tailwind config",
+    "functional components",
+    "CSS-in-JS",
+    "dynamic styling",
+    "theme switching",
+    "conditional rendering",
+    "config-driven theming"
+  ],
+  "confidence": 0.9333333333333332,
+  "consensus": 0.38374051604522685,
+  "individualScans": [
+    {
+      "scanId": 1,
+      "components": {
+        "total": 1,
+        "byType": {
+          "function": 1,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "BeiAnGongAn"
+        ]
+      },
+      "tokens": {
+        "total": 147,
+        "byCategory": {
+          "color": 45,
+          "spacing": 12,
+          "typography": 25,
+          "shadow": 8,
+          "border": 3,
+          "other": 54
+        },
+        "samples": {
+          "color": [
+            "--theme-color",
+            "day.DEFAULT",
+            "night.DEFAULT",
+            "primary",
+            "secondary",
+            "dark.DEFAULT"
+          ],
+          "spacing": [
+            "maxWidth.side",
+            "maxWidth.9/10",
+            "screens.sm",
+            "screens.md",
+            "container.padding",
+            "width: 5px"
+          ]
+        }
+      },
+      "patterns": [
+        "function components",
+        "jsx styling",
+        "theme configuration",
+        "css-in-js",
+        "tailwind config"
+      ],
+      "confidence": 0.95,
+      "notes": "This appears to be a sample of the NotionNext codebase focused on one component (BeiAnGongAn) and extensive theme/configuration files. The token count includes Tailwind config values, CSS custom properties, and theme configuration objects. The codebase uses a configuration-driven approach with extensive theming support across multiple theme variants (hexo, heo, matery, etc.)."
+    },
+    {
+      "scanId": 2,
+      "components": {
+        "total": 1,
+        "byType": {
+          "function": 1,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "BeiAnGongAn"
+        ]
+      },
+      "tokens": {
+        "total": 312,
+        "byCategory": {
+          "color": 45,
+          "spacing": 15,
+          "typography": 25,
+          "shadow": 8,
+          "border": 4,
+          "other": 215
+        },
+        "samples": {
+          "color": [
+            "--theme-color",
+            "colors.day.DEFAULT",
+            "colors.night.DEFAULT",
+            "colors.primary",
+            "colors.dark.DEFAULT"
+          ],
+          "spacing": [
+            "maxWidth.side",
+            "screens.sm",
+            "screens.md",
+            "container.padding",
+            "width.5"
+          ]
+        }
+      },
+      "patterns": [
+        "functional components",
+        "theme configuration",
+        "CSS-in-JS",
+        "dynamic styling",
+        "theme switching"
+      ],
+      "confidence": 0.9,
+      "notes": "This is a Next.js blog framework with extensive theme configuration. Only one component file was provided in the sample, but the codebase shows a rich design token system across multiple themes (commerce, hexo, heo, etc.) with comprehensive color schemes, typography, and layout configurations. The tokens are primarily defined in theme config files and Tailwind configuration rather than CSS variables."
+    },
+    {
+      "scanId": 3,
+      "components": {
+        "total": 5,
+        "byType": {
+          "function": 5,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "BeiAnGongAn",
+          "GlobalStyle",
+          "ThemeSwitch",
+          "Draggable",
+          "SideBarDrawer"
+        ]
+      },
+      "tokens": {
+        "total": 127,
+        "byCategory": {
+          "color": 42,
+          "spacing": 15,
+          "typography": 18,
+          "shadow": 8,
+          "border": 6,
+          "other": 38
+        },
+        "samples": {
+          "color": [
+            "--theme-color",
+            "day.DEFAULT",
+            "night.DEFAULT",
+            "primary",
+            "secondary",
+            "hexo.background-gray"
+          ],
+          "spacing": [
+            "maxWidth.side",
+            "maxWidth.9/10",
+            "screens.sm",
+            "screens.md",
+            "container.padding"
+          ]
+        }
+      },
+      "patterns": [
+        "functional components",
+        "theme configuration",
+        "conditional rendering",
+        "CSS-in-JS",
+        "config-driven theming"
+      ],
+      "confidence": 0.95,
+      "notes": "This is a Next.js blog framework with multiple theme support. Most components are in theme directories not shown in the sample. The codebase uses extensive configuration files for theming and design tokens. Design tokens are primarily defined in tailwind.config.js and theme-specific config files. The sample shows only a few core components - the full codebase likely has many more theme-specific components."
+    }
+  ],
+  "notes": "Agent 1: This appears to be a sample of the NotionNext codebase focused on one component (BeiAnGongAn) and extensive theme/configuration files. The token count includes Tailwind config values, CSS custom properties, and theme configuration objects. The codebase uses a configuration-driven approach with extensive theming support across multiple theme variants (hexo, heo, matery, etc.).\nAgent 2: This is a Next.js blog framework with extensive theme configuration. Only one component file was provided in the sample, but the codebase shows a rich design token system across multiple themes (commerce, hexo, heo, etc.) with comprehensive color schemes, typography, and layout configurations. The tokens are primarily defined in theme config files and Tailwind configuration rather than CSS variables.\nAgent 3: This is a Next.js blog framework with multiple theme support. Most components are in theme directories not shown in the sample. The codebase uses extensive configuration files for theming and design tokens. Design tokens are primarily defined in tailwind.config.js and theme-specific config files. The sample shows only a few core components - the full codebase likely has many more theme-specific components."
+}

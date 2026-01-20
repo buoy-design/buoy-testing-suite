@@ -1,0 +1,29 @@
+{
+  "repo": {
+    "url": "https://github.com/darekkay/dashboard",
+    "name": "dashboard",
+    "owner": "darekkay"
+  },
+  "score": 8,
+  "testedAt": "2026-01-17T00:46:52.381Z",
+  "buoyVersion": "0.2.5",
+  "designSystemSources": [
+    "admin-panel"
+  ],
+  "scan": {
+    "components": 65,
+    "tokens": 0,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 21,
+    "byType": {
+      "semantic-mismatch": 16,
+      "hardcoded-value": 5
+    },
+    "bySeverity": {
+      "warning": 16,
+      "info": 5
+    }
+  }
+}

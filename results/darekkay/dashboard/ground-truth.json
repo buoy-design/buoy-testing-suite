@@ -1,0 +1,515 @@
+{
+  "repo": "darekkay/dashboard",
+  "scannedAt": "2026-01-16T23:35:16.805Z",
+  "model": "claude-sonnet-4-20250514",
+  "scanCount": 3,
+  "components": {
+    "total": 35,
+    "min": 33,
+    "max": 37,
+    "stdDev": 2.0,
+    "byType": {
+      "function": 33,
+      "forwardRef": 0,
+      "memo": 0,
+      "class": 0,
+      "factory": 0,
+      "compound": 0
+    },
+    "names": [
+      "App",
+      "MenuAction",
+      "MenuSeparator",
+      "BackgroundSelect",
+      "ImportExport",
+      "LanguageSelect",
+      "ThemeOption",
+      "ThemeSelect",
+      "WidgetContent",
+      "Widget",
+      "LineChart",
+      "Dashboard",
+      "Drawer",
+      "DatePicker",
+      "Dropdown",
+      "FileUpload",
+      "Label",
+      "TextArea",
+      "Header",
+      "Headline",
+      "Icon",
+      "Loading",
+      "Menu",
+      "Modal",
+      "Section",
+      "Settings",
+      "StatsRow",
+      "Deviation",
+      "WelcomePage",
+      "WidgetConfiguration",
+      "WidgetError",
+      "WidgetOverlay",
+      "WidgetStatusDisplay",
+      "WidgetUnconfigured"
+    ]
+  },
+  "tokens": {
+    "total": 47,
+    "min": 28,
+    "max": 47,
+    "stdDev": 8.9566858950296,
+    "byCategory": {
+      "color": 17,
+      "spacing": 6,
+      "typography": 10,
+      "shadow": 2,
+      "border": 2,
+      "other": 3
+    },
+    "samples": {
+      "color": [
+        "--color-text-default",
+        "--color-background-offset",
+        "--color-focus-ring",
+        "--loading-background-color",
+        "--color-text-interaction",
+        "--color-border-default"
+      ],
+      "spacing": [
+        "minWidth.250",
+        "fontSize.0",
+        "fontSize.1",
+        "spacing values",
+        "--spacing-4",
+        "fontSize.7",
+        "fontSize.0-7"
+      ],
+      "typography": [
+        "fontSize.0",
+        "fontSize.7",
+        "font-family values",
+        "fontSize.1",
+        "fontSize.2",
+        "fontSize.3"
+      ],
+      "shadow": [
+        "--color-box-shadow",
+        "box-shadow values",
+        "box-shadow"
+      ],
+      "border": [
+        "--color-border-default",
+        "border-radius values",
+        "border-radius"
+      ],
+      "other": [
+        "--loading-background-color",
+        "--button-secondary-color"
+      ]
+    }
+  },
+  "patterns": [
+    "functional components",
+    "HOC (withErrorHandling)",
+    "compound components (Menu)",
+    "custom hooks",
+    "factory functions",
+    "Storybook integration",
+    "TypeScript interfaces",
+    "Redux connected components",
+    "responsive design patterns",
+    "external component library integration",
+    "widget system architecture",
+    "configuration components pattern",
+    "story-driven development",
+    "compound exports",
+    "function components",
+    "class components (HOC)",
+    "hooks pattern",
+    "redux integration",
+    "tailwind integration",
+    "css modules/scss"
+  ],
+  "confidence": 0.8833333333333333,
+  "consensus": 0.8117434667785657,
+  "individualScans": [
+    {
+      "scanId": 1,
+      "components": {
+        "total": 67,
+        "byType": {
+          "function": 60,
+          "forwardRef": 3,
+          "memo": 0,
+          "class": 2,
+          "factory": 1,
+          "compound": 1
+        },
+        "names": [
+          "Button",
+          "Input",
+          "Link",
+          "Icon",
+          "Modal",
+          "Drawer",
+          "Dashboard",
+          "Header",
+          "DatePicker",
+          "Dropdown",
+          "TextArea",
+          "FileUpload",
+          "Label",
+          "Loading",
+          "Section",
+          "WelcomePage",
+          "Widget",
+          "LineChart",
+          "App",
+          "Headline",
+          "Settings",
+          "ThemeSelect",
+          "LanguageSelect",
+          "BackgroundSelect",
+          "ImportExport",
+          "Menu",
+          "MenuItem",
+          "MenuSeparator",
+          "StatsRow",
+          "Deviation",
+          "WidgetConfiguration",
+          "WidgetContent",
+          "WidgetError",
+          "WidgetOverlay",
+          "WidgetStatusDisplay",
+          "WidgetUnconfigured",
+          "Chart",
+          "Counter",
+          "Cryptocurrencies",
+          "DateTime",
+          "DayCountdown",
+          "GithubStats",
+          "Image",
+          "QrCode",
+          "RandomImage",
+          "Search",
+          "Text",
+          "TotdChemicalElements",
+          "TotdWorldCountries",
+          "Weather",
+          "Website",
+          "YoutubeStats",
+          "Row",
+          "UsePrevious",
+          "UseInterval",
+          "Variants",
+          "Showcase"
+        ]
+      },
+      "tokens": {
+        "total": 47,
+        "byCategory": {
+          "color": 15,
+          "spacing": 8,
+          "typography": 12,
+          "shadow": 3,
+          "border": 4,
+          "other": 5
+        },
+        "samples": {
+          "color": [
+            "--color-text-default",
+            "--color-background-offset",
+            "--color-focus-ring",
+            "--loading-background-color"
+          ],
+          "spacing": [
+            "minWidth.250",
+            "fontSize.0",
+            "fontSize.1",
+            "spacing values"
+          ],
+          "typography": [
+            "fontSize.0",
+            "fontSize.7",
+            "font-family values"
+          ],
+          "shadow": [
+            "--color-box-shadow",
+            "box-shadow values"
+          ],
+          "border": [
+            "--color-border-default",
+            "border-radius values"
+          ]
+        }
+      },
+      "patterns": [
+        "functional components",
+        "HOC (withErrorHandling)",
+        "compound components (Menu)",
+        "custom hooks",
+        "factory functions",
+        "Storybook integration",
+        "TypeScript interfaces",
+        "Redux connected components",
+        "responsive design patterns"
+      ],
+      "confidence": 0.9,
+      "notes": "This is a React dashboard application with TypeScript. Components are primarily functional with some class components and HOCs. Design tokens are defined through CSS custom properties and Tailwind config. The codebase follows modern React patterns with hooks, TypeScript interfaces, and Storybook documentation. Widget system suggests a plugin-like architecture."
+    },
+    {
+      "scanId": 2,
+      "components": {
+        "total": 67,
+        "byType": {
+          "function": 59,
+          "forwardRef": 3,
+          "memo": 1,
+          "class": 2,
+          "factory": 2,
+          "compound": 0
+        },
+        "names": [
+          "App",
+          "Dashboard",
+          "Header",
+          "Widget",
+          "WidgetConfiguration",
+          "WidgetContent",
+          "WidgetError",
+          "WidgetOverlay",
+          "WidgetStatusDisplay",
+          "WidgetUnconfigured",
+          "Drawer",
+          "Modal",
+          "Section",
+          "Settings",
+          "BackgroundSelect",
+          "ImportExport",
+          "LanguageSelect",
+          "ThemeSelect",
+          "WelcomePage",
+          "Icon",
+          "CustomIcon",
+          "FontAwesomeIcon",
+          "Loading",
+          "Menu",
+          "MenuItem",
+          "MenuDivider",
+          "Headline",
+          "StatsRow",
+          "Deviation",
+          "LineChart",
+          "DatePicker",
+          "Dropdown",
+          "FileUpload",
+          "Label",
+          "TextArea",
+          "ChartWidget",
+          "CounterWidget",
+          "CryptocurrenciesWidget",
+          "DateTimeWidget",
+          "DayCountdownWidget",
+          "GithubStatsWidget",
+          "ImageWidget",
+          "QrCodeWidget",
+          "RandomImageWidget",
+          "SearchWidget",
+          "TextWidget",
+          "TotdChemicalElementsWidget",
+          "TotdWorldCountriesWidget",
+          "WeatherWidget",
+          "WebsiteWidget",
+          "YoutubeStatsWidget",
+          "ChartConfiguration",
+          "CounterConfiguration",
+          "CryptocurrenciesConfiguration",
+          "DateTimeConfiguration",
+          "DayCountdownConfiguration",
+          "GithubStatsConfiguration",
+          "ImageConfiguration",
+          "QrCodeConfiguration",
+          "SearchConfiguration",
+          "TextConfiguration",
+          "WeatherConfiguration",
+          "WebsiteConfiguration",
+          "YoutubeStatsConfiguration",
+          "ErrorHandling",
+          "UsePrevious",
+          "UseInterval",
+          "Variants",
+          "Showcase"
+        ]
+      },
+      "tokens": {
+        "total": 47,
+        "byCategory": {
+          "color": 25,
+          "spacing": 8,
+          "typography": 10,
+          "shadow": 2,
+          "border": 1,
+          "other": 1
+        },
+        "samples": {
+          "color": [
+            "--color-text-default",
+            "--color-background-offset",
+            "--color-focus-ring",
+            "--color-text-interaction",
+            "--color-border-default"
+          ],
+          "spacing": [
+            "--spacing-4",
+            "minWidth.250",
+            "fontSize.0",
+            "fontSize.7"
+          ],
+          "typography": [
+            "fontSize.0",
+            "fontSize.1",
+            "fontSize.2",
+            "fontSize.3"
+          ],
+          "shadow": [
+            "--color-box-shadow",
+            "box-shadow"
+          ],
+          "border": [
+            "--color-border-default"
+          ]
+        }
+      },
+      "patterns": [
+        "HOC (withErrorHandling)",
+        "factory functions",
+        "custom hooks",
+        "external component library integration",
+        "widget system architecture",
+        "configuration components pattern",
+        "story-driven development",
+        "compound exports"
+      ],
+      "confidence": 0.85,
+      "notes": "This is a React dashboard application with a widget-based architecture. Components include form elements, charts, various widgets, and configuration components. The codebase uses Tailwind CSS with custom configuration, SCSS with CSS variables for theming, and follows a story-driven development approach with Storybook. The widget system appears to use a factory pattern for creating widget instances. Some components are imported from an external @darekkay/react-ui library."
+    },
+    {
+      "scanId": 3,
+      "components": {
+        "total": 47,
+        "byType": {
+          "function": 45,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 2,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "App",
+          "Dashboard",
+          "Drawer",
+          "Header",
+          "Headline",
+          "Icon",
+          "Loading",
+          "Menu",
+          "Modal",
+          "Section",
+          "Settings",
+          "Widget",
+          "WidgetConfiguration",
+          "WidgetContent",
+          "WidgetError",
+          "WidgetOverlay",
+          "WidgetStatusDisplay",
+          "WidgetUnconfigured",
+          "DatePicker",
+          "Dropdown",
+          "FileUpload",
+          "Label",
+          "TextArea",
+          "LineChart",
+          "StatsRow",
+          "Deviation",
+          "WelcomePage",
+          "BackgroundSelect",
+          "ImportExport",
+          "LanguageSelect",
+          "ThemeSelect",
+          "Chart",
+          "Counter",
+          "Cryptocurrencies",
+          "DateTime",
+          "DayCountdown",
+          "GitHubStats",
+          "Image",
+          "QRCode",
+          "RandomImage",
+          "Search",
+          "Text",
+          "TOTDChemicalElements",
+          "TOTDWorldCountries",
+          "Weather",
+          "Website",
+          "YouTubeStats",
+          "withErrorHandling"
+        ]
+      },
+      "tokens": {
+        "total": 28,
+        "byCategory": {
+          "color": 12,
+          "spacing": 2,
+          "typography": 8,
+          "shadow": 2,
+          "border": 2,
+          "other": 2
+        },
+        "samples": {
+          "color": [
+            "--color-text-default",
+            "--color-background-offset",
+            "--color-border-default",
+            "--color-focus-ring"
+          ],
+          "spacing": [
+            "minWidth.250",
+            "fontSize.0-7"
+          ],
+          "typography": [
+            "fontSize.0",
+            "fontSize.1",
+            "fontSize.2",
+            "fontSize.3"
+          ],
+          "shadow": [
+            "--color-box-shadow",
+            "box-shadow"
+          ],
+          "border": [
+            "--color-border-default",
+            "border-radius"
+          ],
+          "other": [
+            "--loading-background-color",
+            "--button-secondary-color"
+          ]
+        }
+      },
+      "patterns": [
+        "function components",
+        "class components (HOC)",
+        "hooks pattern",
+        "compound exports",
+        "story-driven development",
+        "redux integration",
+        "tailwind integration",
+        "css modules/scss"
+      ],
+      "confidence": 0.9,
+      "notes": "This is a well-structured dashboard application with a clear component hierarchy. Components are primarily functional React components with some class-based HOCs. The design system uses a combination of CSS variables, Tailwind configuration, and SCSS for styling. The codebase shows good separation between widgets, UI components, and configuration. Token system appears to be custom-built rather than using a standard design token format."
+    }
+  ],
+  "notes": "Agent 1: This is a React dashboard application with TypeScript. Components are primarily functional with some class components and HOCs. Design tokens are defined through CSS custom properties and Tailwind config. The codebase follows modern React patterns with hooks, TypeScript interfaces, and Storybook documentation. Widget system suggests a plugin-like architecture.\nAgent 2: This is a React dashboard application with a widget-based architecture. Components include form elements, charts, various widgets, and configuration components. The codebase uses Tailwind CSS with custom configuration, SCSS with CSS variables for theming, and follows a story-driven development approach with Storybook. The widget system appears to use a factory pattern for creating widget instances. Some components are imported from an external @darekkay/react-ui library.\nAgent 3: This is a well-structured dashboard application with a clear component hierarchy. Components are primarily functional React components with some class-based HOCs. The design system uses a combination of CSS variables, Tailwind configuration, and SCSS for styling. The codebase shows good separation between widgets, UI components, and configuration. Token system appears to be custom-built rather than using a standard design token format."
+}

@@ -1,0 +1,367 @@
+{
+  "repo": "ndom91/briefkasten",
+  "scannedAt": "2026-01-17T00:06:17.811Z",
+  "model": "claude-sonnet-4-20250514",
+  "scanCount": 3,
+  "components": {
+    "total": 24,
+    "min": 22,
+    "max": 26,
+    "stdDev": 2.0,
+    "byType": {
+      "function": 24,
+      "forwardRef": 0,
+      "memo": 0,
+      "class": 0,
+      "factory": 0,
+      "compound": 0
+    },
+    "names": [
+      "BookmarkTableRow",
+      "Layout",
+      "Footer",
+      "Skeleton",
+      "ItemHeader",
+      "BookmarkCard",
+      "EmptyDashboard",
+      "Toast",
+      "DashboardHeader",
+      "Modal",
+      "TagTableRow",
+      "DataTable",
+      "Rating",
+      "Sidebar",
+      "Banner",
+      "Breadcrumbs",
+      "CategoryTableRow",
+      "Chip",
+      "Meta",
+      "Pagination",
+      "QuickAddPopover",
+      "QuickAdd",
+      "SlideOut",
+      "ToastContainer"
+    ]
+  },
+  "tokens": {
+    "total": 8,
+    "min": 3,
+    "max": 47,
+    "stdDev": 19.669491322575904,
+    "byCategory": {
+      "color": 5,
+      "spacing": 5,
+      "typography": 4,
+      "shadow": 1,
+      "border": 1,
+      "other": 3
+    },
+    "samples": {
+      "spacing": [
+        "maxWidth.8xl",
+        "p-2",
+        "px-3",
+        "py-2",
+        "m-8",
+        "space-x-3"
+      ],
+      "typography": [
+        "fontFamily.sans",
+        "fontFamily.serif"
+      ],
+      "other": [
+        "experimental.variantGrouping",
+        "darkMode",
+        "content",
+        "plugins",
+        "theme"
+      ],
+      "color": [
+        "slate-600",
+        "slate-800",
+        "gray-100",
+        "white",
+        "emerald-500"
+      ]
+    }
+  },
+  "patterns": [
+    "functional components",
+    "compound components (Headless UI)",
+    "custom hooks",
+    "Next.js patterns",
+    "Tailwind CSS",
+    "state management (Zustand)",
+    "dynamic imports",
+    "function components",
+    "Next.js pages",
+    "Tailwind CSS utility-first",
+    "default export functions",
+    "React hooks usage",
+    "prop destructuring",
+    "conditional rendering",
+    "Headless UI integration",
+    "Tailwind CSS classes"
+  ],
+  "confidence": 0.9333333333333332,
+  "consensus": 0.491306258898899,
+  "individualScans": [
+    {
+      "scanId": 1,
+      "components": {
+        "total": 36,
+        "byType": {
+          "function": 36,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "Banner",
+          "BookmarkCard",
+          "BookmarkTableRow",
+          "Breadcrumbs",
+          "CategoryTableRow",
+          "Chip",
+          "DashboardHeader",
+          "EmptyDashboard",
+          "Footer",
+          "ItemHeader",
+          "Layout",
+          "Meta",
+          "Modal",
+          "Pagination",
+          "QuickAddPopover",
+          "QuickAdd",
+          "Rating",
+          "Sidebar",
+          "Skeleton",
+          "SlideOut",
+          "Table",
+          "TagTableRow",
+          "Toast",
+          "ToastContainer",
+          "ToastElements",
+          "Custom404",
+          "Custom500",
+          "App",
+          "Error",
+          "SignIn",
+          "Categories",
+          "Index",
+          "Settings",
+          "Tags"
+        ]
+      },
+      "tokens": {
+        "total": 8,
+        "byCategory": {
+          "color": 0,
+          "spacing": 1,
+          "typography": 2,
+          "shadow": 0,
+          "border": 0,
+          "other": 5
+        },
+        "samples": {
+          "spacing": [
+            "maxWidth.8xl"
+          ],
+          "typography": [
+            "fontFamily.sans",
+            "fontFamily.serif"
+          ],
+          "other": [
+            "experimental.variantGrouping",
+            "darkMode",
+            "content",
+            "plugins",
+            "theme"
+          ]
+        }
+      },
+      "patterns": [
+        "functional components",
+        "compound components (Headless UI)",
+        "custom hooks",
+        "Next.js patterns",
+        "Tailwind CSS",
+        "state management (Zustand)",
+        "dynamic imports"
+      ],
+      "confidence": 0.95,
+      "notes": "This is a Next.js bookmark management app using Tailwind CSS for styling. Components are all functional React components. Design tokens are primarily managed through Tailwind's configuration with minimal custom tokens. The app uses Headless UI for accessible components and Zustand for state management. Most styling is done via Tailwind utility classes rather than custom design tokens."
+    },
+    {
+      "scanId": 2,
+      "components": {
+        "total": 36,
+        "byType": {
+          "function": 36,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "Banner",
+          "BookmarkCard",
+          "BookmarkTableRow",
+          "Breadcrumbs",
+          "CategoryTableRow",
+          "Chip",
+          "DashboardHeader",
+          "EmptyDashboard",
+          "Footer",
+          "ItemHeader",
+          "Layout",
+          "Meta",
+          "Modal",
+          "Pagination",
+          "Popover",
+          "QuickAdd",
+          "Rating",
+          "Sidebar",
+          "Skeleton",
+          "SlideOut",
+          "Table",
+          "TagTableRow",
+          "Toast",
+          "ToastContainer",
+          "ToastElements1",
+          "ToastElements2",
+          "ToastElements3",
+          "Page404",
+          "Page500",
+          "App",
+          "Error",
+          "SignIn",
+          "Categories",
+          "Index",
+          "Settings",
+          "Tags"
+        ]
+      },
+      "tokens": {
+        "total": 3,
+        "byCategory": {
+          "color": 0,
+          "spacing": 1,
+          "typography": 2,
+          "shadow": 0,
+          "border": 0,
+          "other": 0
+        },
+        "samples": {
+          "spacing": [
+            "maxWidth.8xl"
+          ],
+          "typography": [
+            "fontFamily.sans",
+            "fontFamily.serif"
+          ]
+        }
+      },
+      "patterns": [
+        "function components",
+        "Next.js pages",
+        "Tailwind CSS utility-first"
+      ],
+      "confidence": 0.9,
+      "notes": "This is a Next.js bookmark management app using Tailwind CSS for styling. Components are primarily functional React components with standard patterns. The design system relies heavily on Tailwind's default tokens with minimal custom extensions. ToastElements exports 3 components from a single file. Most styling is done through Tailwind utility classes rather than custom design tokens."
+    },
+    {
+      "scanId": 3,
+      "components": {
+        "total": 36,
+        "byType": {
+          "function": 36,
+          "forwardRef": 0,
+          "memo": 0,
+          "class": 0,
+          "factory": 0,
+          "compound": 0
+        },
+        "names": [
+          "Banner",
+          "BookmarkCard",
+          "BookmarkTableRow",
+          "Breadcrumbs",
+          "CategoryTableRow",
+          "Chip",
+          "DashboardHeader",
+          "EmptyDashboard",
+          "Footer",
+          "ItemHeader",
+          "Layout",
+          "Meta",
+          "Modal",
+          "Pagination",
+          "QuickAddPopover",
+          "QuickAdd",
+          "Rating",
+          "Sidebar",
+          "Skeleton",
+          "SlideOut",
+          "Table",
+          "TagTableRow",
+          "Toast",
+          "ToastContainer",
+          "ToastElements",
+          "NotFound",
+          "ServerError",
+          "App",
+          "ErrorPage",
+          "SignIn",
+          "Categories",
+          "Index",
+          "Settings",
+          "Tags",
+          "Sidebar"
+        ]
+      },
+      "tokens": {
+        "total": 47,
+        "byCategory": {
+          "color": 15,
+          "spacing": 12,
+          "typography": 8,
+          "shadow": 4,
+          "border": 3,
+          "other": 5
+        },
+        "samples": {
+          "color": [
+            "slate-600",
+            "slate-800",
+            "gray-100",
+            "white",
+            "emerald-500"
+          ],
+          "spacing": [
+            "p-2",
+            "px-3",
+            "py-2",
+            "m-8",
+            "space-x-3"
+          ]
+        }
+      },
+      "patterns": [
+        "default export functions",
+        "React hooks usage",
+        "prop destructuring",
+        "conditional rendering",
+        "Headless UI integration",
+        "Tailwind CSS classes",
+        "dynamic imports"
+      ],
+      "confidence": 0.95,
+      "notes": "This is a Next.js bookmark management application using standard React functional components with hooks. All components follow the default export pattern. Design tokens are implemented through Tailwind CSS utility classes rather than custom CSS variables. The codebase uses Headless UI for complex interactive components and follows modern React patterns with hooks for state management."
+    }
+  ],
+  "notes": "Agent 1: This is a Next.js bookmark management app using Tailwind CSS for styling. Components are all functional React components. Design tokens are primarily managed through Tailwind's configuration with minimal custom tokens. The app uses Headless UI for accessible components and Zustand for state management. Most styling is done via Tailwind utility classes rather than custom design tokens.\nAgent 2: This is a Next.js bookmark management app using Tailwind CSS for styling. Components are primarily functional React components with standard patterns. The design system relies heavily on Tailwind's default tokens with minimal custom extensions. ToastElements exports 3 components from a single file. Most styling is done through Tailwind utility classes rather than custom design tokens.\nAgent 3: This is a Next.js bookmark management application using standard React functional components with hooks. All components follow the default export pattern. Design tokens are implemented through Tailwind CSS utility classes rather than custom CSS variables. The codebase uses Headless UI for complex interactive components and follows modern React patterns with hooks for state management."
+}

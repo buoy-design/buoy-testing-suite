@@ -1,0 +1,578 @@
+{
+  "id": "darekkay-dashboard-1768610808814",
+  "repo": {
+    "url": "https://github.com/darekkay/dashboard",
+    "owner": "darekkay",
+    "name": "dashboard",
+    "description": "Customizable personal dashboard and startpage",
+    "stars": 197,
+    "forks": 28,
+    "defaultBranch": "master",
+    "lastCommit": "2024-08-13T16:45:03.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "dashboard",
+      "react",
+      "react-testing-library",
+      "tailwindcss",
+      "typescript"
+    ],
+    "designSystemSignals": [
+      "admin-panel"
+    ],
+    "activitySignals": [
+      "contributing-guide",
+      "good-first-issues",
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 8,
+      "designSystem": 2,
+      "activity": 6,
+      "breakdown": {
+        "admin-panel": 2,
+        "contributing-guide": 2,
+        "good-first-issues": 1,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-17T00:45:46.612Z"
+  },
+  "status": "completed",
+  "startedAt": "2026-01-17T00:46:48.814Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "buoyOutput": {
+    "scan": {
+      "components": 65,
+      "tokens": 0,
+      "sources": []
+    },
+    "drift": {
+      "total": 21,
+      "byType": {
+        "semantic-mismatch": 16,
+        "hardcoded-value": 5
+      },
+      "bySeverity": {
+        "warning": 16,
+        "info": 5
+      },
+      "signals": [
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/youtube-stats/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/youtube-stats/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/youtube-stats/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.342Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/website/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/website/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/website/configuration.tsx:9"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.342Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/weather/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/weather/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/weather/configuration.tsx:8"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.342Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:app/src/widgets/totd-world-countries/index.tsx:TotdWorldCountries:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/totd-world-countries/index.tsx:TotdWorldCountries",
+            "entityName": "TotdWorldCountries",
+            "location": "app/src/widgets/totd-world-countries/index.tsx:11"
+          },
+          "message": "Component \"TotdWorldCountries\" has 1 hardcoded size value: 50px",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "height: 50px (line 34)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/text/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/text/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/text/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/search/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/search/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/search/configuration.tsx:9"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/qr-code/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/qr-code/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/qr-code/configuration.tsx:8"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/image/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/image/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/image/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/github-stats/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/github-stats/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/github-stats/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/day-countdown/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/day-countdown/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/day-countdown/configuration.tsx:8"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/date-time/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/date-time/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/date-time/configuration.tsx:65"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:app/src/widgets/cryptocurrencies/index.tsx:Cryptocurrencies:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/cryptocurrencies/index.tsx:Cryptocurrencies",
+            "entityName": "Cryptocurrencies",
+            "location": "app/src/widgets/cryptocurrencies/index.tsx:12"
+          },
+          "message": "Component \"Cryptocurrencies\" has 2 hardcoded size values: 2rem, 2rem",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 2rem (line 37)",
+              "height: 2rem (line 37)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/cryptocurrencies/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/cryptocurrencies/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/cryptocurrencies/configuration.tsx:8"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/counter/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/counter/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/counter/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/widgets/chart/configuration.tsx:Configuration:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/widgets/chart/configuration.tsx:Configuration",
+            "entityName": "Configuration",
+            "location": "app/src/widgets/chart/configuration.tsx:7"
+          },
+          "message": "Prop \"props\" in \"Configuration\" uses type \"ConfigurationProps<WidgetOptions>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ConfigurationProps<WidgetOptions>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:app/src/components/welcome-page/index.tsx:WelcomePage:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/welcome-page/index.tsx:WelcomePage",
+            "entityName": "WelcomePage",
+            "location": "app/src/components/welcome-page/index.tsx:10"
+          },
+          "message": "Component \"WelcomePage\" has 1 hardcoded size value: 500px",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 500px (line 19)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:app/src/components/menu/index.tsx:Menu:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/menu/index.tsx:Menu",
+            "entityName": "Menu",
+            "location": "app/src/components/menu/index.tsx:12"
+          },
+          "message": "Component \"Menu\" has 1 hardcoded size value: 5px",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "top: 5px (line 31)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/components/menu/index.tsx:MenuAction:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/menu/index.tsx:MenuAction",
+            "entityName": "MenuAction",
+            "location": "app/src/components/menu/index.tsx:41"
+          },
+          "message": "Prop \"props\" in \"MenuAction\" uses type \"MenuItemProps\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "MenuItemProps",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/components/settings/theme-select/index.tsx:ThemeOption:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/settings/theme-select/index.tsx:ThemeOption",
+            "entityName": "ThemeOption",
+            "location": "app/src/components/settings/theme-select/index.tsx:17"
+          },
+          "message": "Prop \"props\" in \"ThemeOption\" uses type \"ThemeProps\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "ThemeProps",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:hardcoded-value:react:app/src/components/settings/theme-select/index.tsx:ThemeOption:spacing",
+          "type": "hardcoded-value",
+          "severity": "info",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/settings/theme-select/index.tsx:ThemeOption",
+            "entityName": "ThemeOption",
+            "location": "app/src/components/settings/theme-select/index.tsx:17"
+          },
+          "message": "Component \"ThemeOption\" has 4 hardcoded size values: 150px, 100px, 40%, 60%",
+          "details": {
+            "suggestions": [
+              "Consider using spacing tokens for consistency"
+            ],
+            "affectedFiles": [
+              "width: 150px (line 21)",
+              "height: 100px (line 21)",
+              "width: 40% (line 34)",
+              "width: 60% (line 35)"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        },
+        {
+          "id": "drift:semantic-mismatch:react:app/src/components/forms/dropdown/index.tsx:Dropdown:props",
+          "type": "semantic-mismatch",
+          "severity": "warning",
+          "source": {
+            "entityType": "component",
+            "entityId": "react:app/src/components/forms/dropdown/index.tsx:Dropdown",
+            "entityName": "Dropdown",
+            "location": "app/src/components/forms/dropdown/index.tsx:9"
+          },
+          "message": "Prop \"props\" in \"Dropdown\" uses type \"Props<T>\" but other components use \"Props\"",
+          "details": {
+            "expected": "Props",
+            "actual": "Props<T>",
+            "usedIn": [
+              "YoutubeStats",
+              "Weather",
+              "TotdWorldCountries"
+            ],
+            "suggestions": [
+              "Standardize prop types across components for consistency"
+            ]
+          },
+          "detectedAt": "2026-01-17T00:46:52.343Z"
+        }
+      ]
+    }
+  },
+  "completedAt": "2026-01-17T00:46:52.381Z",
+  "durationMs": 3567
+}

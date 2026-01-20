@@ -1,0 +1,61 @@
+{
+  "id": "SashenJayathilaka-Airbnb-Build-1768612559847",
+  "repo": {
+    "url": "https://github.com/SashenJayathilaka/Airbnb-Build",
+    "owner": "SashenJayathilaka",
+    "name": "Airbnb-Build",
+    "description": "Full Stack Airbnb Clone with Next.js 13 Tailwind-css, Prisma, MongoDB, NextAuth, Framer-motionSocial, Login (Google and Facebook), Image upload, Cloudinary CDN, Location selection, Map component, Country autocomplete, Fetching listings with server components",
+    "stars": 364,
+    "forks": 98,
+    "defaultBranch": "master",
+    "lastCommit": "2023-07-22T05:35:44.000Z",
+    "language": "TypeScript",
+    "topics": [
+      "axios",
+      "bcrypt",
+      "cloudinary",
+      "date-fns",
+      "framer-motion",
+      "mongodb",
+      "next-auth",
+      "next-js-13",
+      "prisma-client",
+      "query-string",
+      "react-date-range",
+      "react-hook-form",
+      "react-icons",
+      "react-leaflet",
+      "react-select",
+      "react-toastify",
+      "tailwindcss",
+      "typescript",
+      "world-countries",
+      "zustand"
+    ],
+    "designSystemSignals": [
+      "nextjs-app"
+    ],
+    "activitySignals": [
+      "high-pr-acceptance",
+      "high-stars"
+    ],
+    "score": {
+      "total": 5,
+      "designSystem": 2,
+      "activity": 3,
+      "breakdown": {
+        "nextjs-app": 2,
+        "high-pr-acceptance": 2,
+        "high-stars": 1
+      }
+    },
+    "discoveredAt": "2026-01-17T00:45:27.473Z"
+  },
+  "status": "failed",
+  "startedAt": "2026-01-17T01:15:59.847Z",
+  "buoyVersion": "0.2.5",
+  "configGenerated": false,
+  "error": "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXC4o3DUsUEbjEXkoS1Mc\"}",
+  "completedAt": "2026-01-17T01:16:01.643Z",
+  "durationMs": 1796
+}

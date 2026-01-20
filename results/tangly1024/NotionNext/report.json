@@ -1,0 +1,24 @@
+{
+  "repo": {
+    "url": "https://github.com/tangly1024/NotionNext",
+    "name": "NotionNext",
+    "owner": "tangly1024"
+  },
+  "score": 8,
+  "testedAt": "2026-01-18T20:28:55.697Z",
+  "buoyVersion": "0.2.5",
+  "designSystemSources": [
+    "tailwind-theme",
+    "headless-ui"
+  ],
+  "scan": {
+    "components": 1,
+    "tokens": 0,
+    "coverage": {}
+  },
+  "drift": {
+    "total": 0,
+    "byType": {},
+    "bySeverity": {}
+  }
+}
