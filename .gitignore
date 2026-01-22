@@ -1,29 +1,24 @@
-# Dependencies
-node_modules/
+# Cloned repositories
+repos/
 
 # Build output
 dist/
+
+# Dependencies
+node_modules/
 
 # Environment
 .env
 .env.local
 
-# Cloned repos (large)
-repos/
+# Temp/state files
+*.log
+.coverage-state.json
+.improvement/daemon.pid
+.improvement/daemon-state.json
+.improvement/parallel-daemon-state.json
 
-# IDE
+# Editor
 .idea/
 .vscode/
 *.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-
-# Test coverage
-coverage/
