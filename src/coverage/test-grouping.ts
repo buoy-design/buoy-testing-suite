@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import 'dotenv/config';
-import { ReactComponentScanner } from '@ahoybuoy/scanners';
+import { ReactComponentScanner } from '@buoy-design/scanners';
 
 async function test() {
   const scanner = new ReactComponentScanner({

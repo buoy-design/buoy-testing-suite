@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import {
   ReactComponentScanner,
-} from '@ahoybuoy/scanners';
+} from '@buoy-design/scanners';
 
 const repoPath = './repos/shadcn-ui/ui';
 const excludePatterns = ['**/node_modules/**', '**/.git/**', '**/dist/**', '**/__tests__/**', '**/__mocks__/**', '**/.turbo/**', '**/.cache/**'];

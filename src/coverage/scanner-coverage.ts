@@ -15,8 +15,8 @@ import {
   TokenScanner,
   TailwindScanner,
   CssScanner,
-} from '@ahoybuoy/scanners';
-import type { Component, DesignToken } from '@ahoybuoy/core';
+} from '@buoy-design/scanners';
+import type { Component, DesignToken } from '@buoy-design/core';
 import Anthropic from '@anthropic-ai/sdk';
 import { readFile, writeFile, mkdir, readdir, stat } from 'fs/promises';
 import { existsSync } from 'fs';

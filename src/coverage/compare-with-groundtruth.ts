@@ -16,8 +16,8 @@ import {
   AngularComponentScanner,
   TokenScanner,
   TailwindScanner,
-} from '@ahoybuoy/scanners';
-import type { Component, DesignToken } from '@ahoybuoy/core';
+} from '@buoy-design/scanners';
+import type { Component, DesignToken } from '@buoy-design/core';
 import { readFile, writeFile, readdir, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
